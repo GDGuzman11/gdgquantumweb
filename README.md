@@ -65,7 +65,7 @@ Once hosted via GitHub Pages:
 
 ## 👨‍💻 Built by Gabriel De Guzman
 Founder of **GDG Quantum Inc.**  
-AI Engineer • Software Developer • Systems Analyst
+Aspiring CyberSecurity Analyst • Software Developer • Systems Analyst • AI Architect
 
 ---
 

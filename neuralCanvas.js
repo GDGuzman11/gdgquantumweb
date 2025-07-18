@@ -2,9 +2,19 @@ import { Neuron } from './neuron.js';
 
 let canvas, ctx;
 const neurons = [];
-const NUM_NEURONS = 70;
+const NUM_NEURONS = 90;
 const LINK_DISTANCE = 130;
 const REPULSION_RADIUS = 80;
+
+// Mood definitions
+const COLORS = {
+  default: { r: 255, g: 200, b: 80 },    // warm yellow
+  dreamfield: { r: 100, g: 180, b: 255 }, // soft blue
+  combustion: { r: 255, g: 100, b: 100 }, // soft red
+  gridlock: { r: 255, g: 255, b: 255 }    // warm white
+};
+
+let currentColor = COLORS.default;
 
 const pointer = {
   x: null,
@@ -19,34 +29,27 @@ export function initNeuralCanvas() {
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
 
-  // 👇 Desktop mouse
-  window.addEventListener('mousemove', (e) => {
+  const handlePointer = (x, y) => {
     const rect = canvas.getBoundingClientRect();
-    pointer.x = e.clientX - rect.left;
-    pointer.y = e.clientY - rect.top;
+    pointer.x = x - rect.left;
+    pointer.y = y - rect.top;
     pointer.active = true;
-  });
+  };
+
+  window.addEventListener('mousemove', e => handlePointer(e.clientX, e.clientY));
   window.addEventListener('mouseout', () => (pointer.active = false));
+  window.addEventListener('touchstart', e => handlePointer(e.touches[0].clientX, e.touches[0].clientY));
+  window.addEventListener('touchmove', e => handlePointer(e.touches[0].clientX, e.touches[0].clientY));
+  window.addEventListener('touchend', () => (pointer.active = false));
 
-  // 👇 Mobile touch
-  window.addEventListener('touchstart', (e) => {
-    const touch = e.touches[0];
-    pointer.x = touch.clientX;
-    pointer.y = touch.clientY;
-    pointer.active = true;
-  });
-  window.addEventListener('touchmove', (e) => {
-    const touch = e.touches[0];
-    pointer.x = touch.clientX;
-    pointer.y = touch.clientY;
-  });
-  window.addEventListener('touchend', () => {
-    pointer.active = false;
-  });
+  const centerX = canvas.width / 2;
+  const centerY = canvas.height / 2;
+  const BOUND_RADIUS = 500;
 
-  // Create neurons
   for (let i = 0; i < NUM_NEURONS; i++) {
-    neurons.push(new Neuron(canvas.width, canvas.height));
+    const n = new Neuron(centerX, centerY, BOUND_RADIUS);
+    n.setGlowColor(currentColor);
+    neurons.push(n);
   }
 
   animate();
@@ -55,57 +58,60 @@ export function initNeuralCanvas() {
 function resizeCanvas() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
+  const centerX = canvas.width / 2;
+  const centerY = canvas.height / 2;
+  neurons.forEach(n => n.setCenter(centerX, centerY));
 }
 
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  for (let i = 0; i < neurons.length; i++) {
-    const n = neurons[i];
-
-    // Repel from mouse or touch
+  for (const n of neurons) {
     if (pointer.active) {
       const dx = n.x - pointer.x;
       const dy = n.y - pointer.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
-
       if (dist < REPULSION_RADIUS) {
         const angle = Math.atan2(dy, dx);
         const force = (REPULSION_RADIUS - dist) / REPULSION_RADIUS;
-        n.vx += Math.cos(angle) * force * 0.2;
-        n.vy += Math.sin(angle) * force * 0.2;
+        n.vx += Math.cos(angle) * force * 0.5;
+        n.vy += Math.sin(angle) * force * 0.5;
       }
     }
 
+    n.setGlowColor(currentColor);
     n.move(canvas.width, canvas.height);
-
-    // Glow if nearby
-    let glowing = false;
-    if (pointer.active) {
-      const dx = n.x - pointer.x;
-      const dy = n.y - pointer.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      glowing = dist < REPULSION_RADIUS;
-    }
-
-    if (glowing) {
-      ctx.shadowColor = 'rgba(245, 197, 66, 0.89)';
-      ctx.shadowBlur = 18;
-    } else {
-      ctx.shadowColor = '#000';
-      ctx.shadowBlur = 6;
-    }
-
-    n.draw(ctx);
-    ctx.shadowBlur = 0;
+    n.setGlow(false);
   }
 
-  // Connections
+  for (let i = 0; i < neurons.length; i++) {
+    let count = 0;
+    for (let j = 0; j < neurons.length; j++) {
+      if (i === j) continue;
+      const dx = neurons[i].x - neurons[j].x;
+      const dy = neurons[i].y - neurons[j].y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < LINK_DISTANCE) count++;
+    }
+
+    if (pointer.active) {
+      const dx = neurons[i].x - pointer.x;
+      const dy = neurons[i].y - pointer.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < LINK_DISTANCE) count++;
+    }
+
+    if (count >= 4) {
+      neurons[i].setGlow(true);
+    }
+  }
+
+  neurons.forEach(n => n.draw(ctx));
+
   for (let i = 0; i < neurons.length; i++) {
     for (let j = i + 1; j < neurons.length; j++) {
       drawConnection(neurons[i], neurons[j]);
     }
-
     if (pointer.active) {
       drawConnection(neurons[i], pointer, true);
     }
@@ -129,3 +135,16 @@ function drawConnection(p1, p2, isPointer = false) {
     ctx.stroke();
   }
 }
+
+// Global hooks
+window.setNeuralMoodInCanvas = (mood) => {
+  currentColor = COLORS[mood] || COLORS.default;
+};
+
+window.previewNeuralMoodInCanvas = (mood) => {
+  currentColor = COLORS[mood] || COLORS.default;
+};
+
+window.clearPreviewMoodInCanvas = () => {
+  currentColor = COLORS.default;
+};

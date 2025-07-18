@@ -87,3 +87,23 @@ Aspiring CyberSecurity Analyst • Software Developer • Systems Analyst • AI
 
 This repo is mostly personal/portfolio — but open to ideas or forks if you’re vibin' with the mission. Let’s build.
 
+---
+
+## 🌈 Dynamic Neural Mood System
+
+The background canvas isn’t just eye candy — it *feels you*.
+
+🧠 Neurons change glow color based on what you're exploring:
+
+| Mood         | Trigger              | Glow Color          |
+|--------------|----------------------|---------------------|
+| `Default`    | On Load              | Soft Warm Yellow 🟡 |
+| `Dreamfield` | Hover/Click `About`  | Soft Blue 🔵         |
+| `Combustion` | Hover/Click `Tools`  | Soft Red 🔴          |
+| `Gridlock`   | Hover/Click `Contact`| Warm White ⚪         |
+
+Transitions are smooth and animated — using real-time RGB tweening inside the canvas draw loop. This isn’t CSS magic; it’s *neural control*.
+
+✅ Glow fades in/out based on proximity + connections  
+✅ Mood logic exposed via `setNeuralMoodInCanvas()` and friends  
+✅ Every neuron pulses independently using vanilla JavaScript  

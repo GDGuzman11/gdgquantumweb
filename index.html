@@ -1,80 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GDG Quantum Inc.</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <!-- 🔬 Background Canvas -->
-    <canvas id="neuralCanvas"></canvas>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GDG Quantum Inc.</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <canvas id="neuralCanvas"></canvas>
 
-    <!-- 🚀 Hero Section -->
-    <div class="hero">
-      <div class="typing-line"><span class="typed-line1"></span></div>
-      <div class="typing-line"><span class="typed-line2"></span></div>
-      <div class="typing-line">
-        <span class="typed-line3"></span><span class="cursor">|</span>
-      </div>
+  <div class="border-frame"></div>
 
-      <!-- CTA Button (initially hidden) -->
-      <a href="landing.html" class="cta-button" id="enterBtn">Launch What Should Exist</a>
+  <div class="centered-container">
+    <div class="typing-line"><span id="line1"></span></div>
+    <div class="typing-line"><span id="line2"></span></div>
+    <div class="typing-line"><span id="line3"></span></div>
+    <div class="typing-line"><span id="line4"></span></div>
+  </div>
+
+  <div class="menu-container hidden">
+    <ul>
+      <li data-target="about" data-mood="dreamfield">About</li>
+      <li data-target="tools" data-mood="combustion">Tools</li>
+      <li data-target="contact" data-mood="gridlock">Contact</li>
+    </ul>
+  </div>
+
+  <div class="panel-container">
+    <div class="panel" id="panel-about">
+      <h2 class="panel-title">About Me</h2>
+      <p class="panel-text">I’m a systems analyst turned AI builder, on a mission to fix hiring inequality and cyber risk through smart, useful automation.</p>
     </div>
 
-    <!-- ✍️ Typing Script -->
-    <script>
-      const lines = [
-        "i'm Gabe,",
-        "and welcome to",
-        "GDG Quantum Inc."
-      ];
+    <div class="panel" id="panel-tools">
+      <h2 class="panel-title">Projects</h2>
+      <p class="panel-text">Explore Resum8, our AI resume assistant, and Aegis — our cyber defense simulator (coming soon).</p>
+    </div>
 
-      const spans = [
-        document.querySelector(".typed-line1"),
-        document.querySelector(".typed-line2"),
-        document.querySelector(".typed-line3")
-      ];
+    <div class="panel" id="panel-contact">
+      <h2 class="panel-title">Contact</h2>
+      <p class="panel-text">Got a mission or wild idea? Let’s build together.</p>
+    </div>
+  </div>
 
-      const cursor = document.querySelector(".cursor");
-      const enterBtn = document.getElementById("enterBtn");
+  <script type="module">
+  import { initNeuralCanvas } from './neuralCanvas.js';
 
-      let currentLine = 0;
-      let charIndex = 0;
-      const typingDelay = 100;
+  const lines = [
+    "i'm Gabe,",
+    "and welcome to",
+    "GDG Quantum Inc."
+  ];
+  const lineElements = [
+    document.getElementById('line1'),
+    document.getElementById('line2'),
+    document.getElementById('line3'),
+    document.getElementById('line4')
+  ];
 
-      function type() {
-        if (charIndex < lines[currentLine].length) {
-          spans[currentLine].textContent += lines[currentLine].charAt(charIndex);
-          charIndex++;
-          setTimeout(type, typingDelay);
-        } else {
-          if (currentLine === lines.length - 1) {
-            cursor.style.display = "inline-block";
-            enterBtn.classList.add("visible");
-          }
+  let currentLine = 0;
+  let charIndex = 0;
+  let currentPanel = null;
 
-          currentLine++;
-          charIndex = 0;
+  function typeNextCharacter() {
+    if (currentLine >= lines.length) {
+      setTimeout(() => {
+        const container = document.querySelector('.centered-container');
+        container.style.transition = 'opacity 1s ease';
+        container.style.opacity = 0;
 
-          if (currentLine < lines.length) {
-            setTimeout(type, 500);
-          }
-        }
+        setTimeout(() => {
+          container.classList.add('hidden');
+          const menu = document.querySelector('.menu-container');
+          menu.classList.remove('hidden');
+          menu.classList.add('visible');
+        }, 1000);
+      }, 800);
+      return;
+    }
+
+    const currentText = lines[currentLine];
+    if (charIndex <= currentText.length) {
+      lineElements[currentLine].textContent = currentText.slice(0, charIndex) + '|';
+      charIndex++;
+      setTimeout(typeNextCharacter, 60);
+    } else {
+      lineElements[currentLine].textContent = currentText;
+      currentLine++;
+      charIndex = 0;
+      setTimeout(typeNextCharacter, 350);
+    }
+  }
+
+  function switchPanel(targetId, mood) {
+    // Step 1: remove old panel
+    if (currentPanel) {
+      currentPanel.classList.remove('visible');
+    }
+
+    // Step 2: set mood first (animation will begin)
+    setNeuralMood(mood);
+
+    // Step 3: after short delay, fade in new panel
+    setTimeout(() => {
+      const nextPanel = document.getElementById(`panel-${targetId}`);
+      if (nextPanel) {
+        nextPanel.classList.add('visible');
+        currentPanel = nextPanel;
       }
+    }, 300);
+  }
 
-      document.addEventListener("DOMContentLoaded", () => {
-        setTimeout(type, 500);
-      });
-    </script>
+  function setNeuralMood(mode) {
+    if (window.setNeuralMoodInCanvas) {
+      window.setNeuralMoodInCanvas(mode);
+    }
+  }
 
-    <!-- 🧠 Neuron Background Script -->
-    <script type="module">
-      import { initNeuralCanvas } from './neuralCanvas.js';
-      window.addEventListener('DOMContentLoaded', initNeuralCanvas);
-    </script>
-  </body>
+  function previewNeuralMood(mood) {
+    if (window.previewNeuralMoodInCanvas) {
+      window.previewNeuralMoodInCanvas(mood);
+    }
+  }
+
+  function clearPreviewMood() {
+    if (window.clearPreviewMoodInCanvas) {
+      window.clearPreviewMoodInCanvas();
+    }
+  }
+
+  document.querySelectorAll('.menu-container li').forEach(item => {
+    const target = item.dataset.target;
+    const mood = item.dataset.mood;
+
+    item.addEventListener('mouseenter', () => {
+      previewNeuralMood(mood);
+    });
+
+    item.addEventListener('mouseleave', () => {
+      clearPreviewMood();
+    });
+
+    item.addEventListener('click', () => {
+      switchPanel(target, mood);
+    });
+  });
+
+  window.addEventListener('DOMContentLoaded', () => {
+    initNeuralCanvas();
+    typeNextCharacter();
+  });
+</script>
+
+</body>
 </html>

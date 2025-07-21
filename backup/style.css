@@ -1,0 +1,116 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fefaf3; /* light cream */
+  font-family: 'Outfit', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  caret-color: transparent; /* prevents native cursor glitch */
+}
+
+/* Hero Container */
+.hero {
+  position: absolute;
+  top: clamp(1.5rem, 5vh, 3rem);
+  left: clamp(2rem, 5vw, 6rem);
+  right: clamp(2rem, 5vw, 6rem); /* NEW: prevents overflow */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 100%;
+  z-index: 1;
+}
+
+/* Each line of text */
+.typing-line {
+  font-size: clamp(3.5rem, 12vw, 10rem); /* clean & big like Ben's */
+  font-weight: 500;
+  line-height: 1.3;
+  color: #111;
+  white-space: normal;               /* NEW: allow wrapping */
+  overflow-wrap: break-word;        /* NEW: wrap long words */
+  word-break: break-word;           /* NEW: support breaks mid-word */
+  letter-spacing: -0.05px;
+}
+
+/* Cursor Styling */
+.cursor {
+  display: none;
+  width: 2px;
+  height: 0.9em;
+  background-color: #111;
+  margin-left: 6px;
+  animation: blink 1s steps(1) infinite;
+  user-select: none;
+  pointer-events: none;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+/* CTA Button */
+.cta-button {
+  display: inline-block;
+  align-self: flex-start; /* 👈 left-align inside flex container */
+  margin-top: 2rem;
+  padding: 0.85rem 1.75rem;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #111;
+  background-color: transparent;
+  border: 3px solid rgba(255, 255, 255, 0); /* invisible until hover */
+  border-radius: 0.5rem;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.cta-button.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cta-button:hover {
+  border-color: rgb(0, 0, 0);
+  transform: translateY(-2px);
+}
+
+/* Neuron Canvas */
+#neuralCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  background: transparent;
+}
+
+/* Mobile Tweaks */
+@media (max-width: 768px) {
+  .typing-line {
+    font-size: clamp(4rem, 8vw, 12rem);
+  }
+
+  .hero {
+    left: 1.5rem;
+    right: 1.5rem;
+    top: 1.5rem;
+  }
+}

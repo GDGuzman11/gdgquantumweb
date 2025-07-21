@@ -168,32 +168,44 @@ html, body {
   margin: 0;
 }
 
-@media (max-width: 480px) {
-  .panel {
-    right: auto;
-    left: 5%;
-    max-width: 90vw;
+@media (max-width: 768px) {
+  html, body {
+    font-size: 15px;
+    overflow: hidden;
+  }
+
+  .typing-line {
+    font-size: clamp(1.3rem, 4.5vw, 3rem);
+    letter-spacing: 0.25em;
+    line-height: 1.2;
+  }
+
+  .centered-container {
+    top: 55%;
+    gap: 1.2rem;
   }
 
   .panel-title {
-    font-size: clamp(2rem, 7vw, 3rem);
+    font-size: clamp(2rem, 6vw, 2.8rem);
   }
 
   .panel-text {
     font-size: 1rem;
-    max-width: 90vw;
-    line-height: 1.6;
+    line-height: 1.5;
+    padding-right: 1rem;
   }
 
   .menu-container {
-    left: 5vw;
-    font-size: 0.95rem;
+    top: 1rem;
+    left: 1rem;
+    font-size: 0.9rem;
   }
 
   .border-frame {
-    top: 0.5rem;
-    bottom: 0.5rem;
-    left: 0.5rem;
-    right: 0.5rem;
+    top: 0.4rem;
+    bottom: 0.4rem;
+    left: 0.4rem;
+    right: 0.4rem;
   }
 }
+

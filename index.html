@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gabriel De Guzman — AI Builder & Systems Analyst</title>
+  <meta name="description" content="Gabriel De Guzman builds ethical AI tools. Founder of GDG Quantum Inc. Every solution starts with understanding the problem." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  
+  <!-- Modular CSS Files -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/neural.css">
+</head>
+<body>
+  <!-- Website Frame -->
+  <div class="website-frame">
+    <div class="frame-corner top-left"></div>
+    <div class="frame-corner top-right"></div>
+    <div class="frame-corner bottom-left"></div>
+    <div class="frame-corner bottom-right"></div>
+  </div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor"></div>
+
+  <!-- Neural Network Indicator -->
+  <div class="neural-indicator">
+    <div class="neural-dot"></div>
+    <div class="neural-dot"></div>
+    <div class="neural-dot"></div>
+    <div class="neural-dot"></div>
+  </div>
+
+  <!-- Neural Flow Animation -->
+  <div class="neural-flow" id="neuralFlow"></div>
+
+  <!-- Neural Canvas -->
+  <canvas id="neuralCanvas"></canvas>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <p class="hero-intro">Gabriel De Guzman — Born 1989, Canada</p>
+        <h1 class="hero-title">
+        Here at <span class="highlight">GDG Quantum Inc.</span><br>
+        we make the i<span class="glitch-text"><span class="glitch-word" id="mpossible">mpossible.</span><span class="glitch-word hidden" id="nevitable">nevitable.</span></span>
+      </h1>
+      <p class="hero-description">
+        Every system has a breaking point. Every problem has a solution. We find both, then build AI that bridges the gap between what is and what could be.
+      </p>
+      <div class="hero-links">
+        <a href="#projects" class="hero-link">View current projects</a>
+        <a href="#contact" class="hero-link">Start a conversation</a>
+        <a href="mailto:gabe@gdgquantuminc.com" class="hero-link">Direct email</a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="about-grid">
+        <div class="about-label">About</div>
+        <div class="about-content">
+          <h2>Every solution starts with understanding the problem.</h2>
+          <p>
+            I'm a systems analyst turned AI builder with a mission to create technology 
+            that serves humanity. Founded GDG Quantum Inc. to develop ethical AI tools 
+            that tackle real challenges in hiring and cybersecurity.
+          </p>
+          <p>
+            My approach is methodical: identify genuine pain points, analyze the system, 
+            build solutions that work. No venture capital pressures, no data harvesting—just 
+            thoughtful automation that makes meaningful work more accessible.
+          </p>
+          <p>
+            Based in Canada, working globally, always building for the long term.
+          </p>
+          
+          <div class="about-stats">
+            <div class="stat">
+              <div class="stat-number">2019</div>
+              <div class="stat-label">Started in systems analysis</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">2024</div>
+              <div class="stat-label">Founded GDG Quantum Inc.</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">∞</div>
+              <div class="stat-label">Problems left to solve</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Ethical commitment</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+      <div class="projects-grid">
+        <div class="projects-label">Projects</div>
+        <div class="projects-intro">
+          <h2>Tools for tomorrow, built today.</h2>
+          <p>
+            Each project addresses a specific frustration in how technology currently works. 
+            All built with ethical AI principles and real-world impact in mind.
+          </p>
+        </div>
+      </div>
+
+      <ul class="project-list">
+        <li class="project-item">
+          <div class="project-info">
+            <h3>Resum8</h3>
+            <p class="project-description">
+              AI-powered resume optimization that beats ATS systems while fighting hiring inequality. 
+              Ethical automation for job seekers.
+            </p>
+          </div>
+          <div class="project-status">In Development</div>
+          <div class="project-year">2025</div>
+        </li>
+
+        <li class="project-item">
+          <div class="project-info">
+            <h3>Aegis</h3>
+            <p class="project-description">
+              Cybersecurity defense simulator for hands-on threat training. 
+              Real scenarios, safe environment.
+            </p>
+          </div>
+          <div class="project-status">Planning</div>
+          <div class="project-year">2025</div>
+        </li>
+
+        <li class="project-item">
+          <div class="project-info">
+            <h3>Neural Canvas</h3>
+            <p class="project-description">
+              Interactive particle systems for web interfaces. 
+              Open-source tool for developers.
+            </p>
+          </div>
+          <div class="project-status">Prototype</div>
+          <div class="project-year">2024</div>
+        </li>
+
+        <li class="project-item">
+          <div class="project-info">
+            <h3>GDG Quantum Inc.</h3>
+            <p class="project-description">
+              Ethical AI company focused on automation that serves humanity. 
+              Building the future of work.
+            </p>
+          </div>
+          <div class="project-status">Active</div>
+          <div class="project-year">2024</div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="contact-grid">
+        <div class="contact-label">Contact</div>
+        <div class="contact-content">
+          <h2>Let's build something meaningful together.</h2>
+          
+          <ul class="contact-links">
+            <li><a href="mailto:gabe@gdgquantuminc.com">gabe@gdgquantuminc.com</a></li>
+            <li><a href="https://linkedin.com/in/gabrieldeguzman">LinkedIn</a></li>
+            <li><a href="https://github.com/GDGuzman11">GitHub</a></li>
+            <li><a href="tel:+1234567890">Schedule a call</a></li>
+          </ul>
+
+          <form class="contact-form" id="contactForm">
+            <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
+            
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required placeholder="Tell me about your project or idea..."></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 Gabriel De Guzman. Building ethical AI, one solution at a time.</p>
+    </div>
+  </footer>
+
+  <!-- Modular JavaScript -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

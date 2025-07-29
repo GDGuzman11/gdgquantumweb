@@ -1,0 +1,297 @@
+/* Website Frame */
+.website-frame {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  border: 1px solid rgba(26, 26, 26, 0.15);
+  pointer-events: none;
+  z-index: 9998;
+  transition: border-color 0.3s ease;
+}
+
+.website-frame::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  border: 1px solid rgba(26, 26, 26, 0.05);
+  border-radius: 0;
+}
+
+/* Frame corners */
+.frame-corner {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: rgba(26, 26, 26, 0.2);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.frame-corner.top-left { 
+  top: -3px; 
+  left: -3px; 
+}
+
+.frame-corner.top-right { 
+  top: -3px; 
+  right: -3px; 
+}
+
+.frame-corner.bottom-left { 
+  bottom: -3px; 
+  left: -3px; 
+}
+
+.frame-corner.bottom-right { 
+  bottom: -3px; 
+  right: -3px; 
+}
+
+.frame-corner::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(26, 26, 26, 0.1), transparent);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.frame-corner.top-left::after { 
+  left: 6px; 
+}
+
+.frame-corner.top-right::after { 
+  right: 6px; 
+  transform: translateY(-50%) rotate(180deg); 
+}
+
+.frame-corner.bottom-left::after { 
+  left: 6px; 
+}
+
+.frame-corner.bottom-right::after { 
+  right: 6px; 
+  transform: translateY(-50%) rotate(180deg); 
+}
+
+/* Hover effect on frame */
+body:hover .website-frame {
+  border-color: rgba(26, 26, 26, 0.25);
+}
+
+body:hover .frame-corner {
+  background: rgba(26, 26, 26, 0.4);
+  transform: scale(1.2);
+}
+
+/* Navigation */
+.nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 2rem;
+  z-index: 100;
+  display: flex;
+  gap: 2rem;
+}
+
+/* Main container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Section layouts */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 0;
+}
+
+.about, .projects, .contact {
+  padding: 8rem 0;
+  border-top: 1px solid rgba(26, 26, 26, 0.1);
+}
+
+.about-grid, .projects-grid, .contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.about-label, .projects-label, .contact-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0.6;
+  position: sticky;
+  top: 2rem;
+}
+
+/* Content areas */
+.about-content, .projects-intro, .contact-content {
+  max-width: none;
+}
+
+.projects-subtitle {
+  font-size: 1.3rem;
+  color: #666;
+  margin-bottom: 4rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Stats and lists */
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.stat {
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(26, 26, 26, 0.1);
+}
+
+.project-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.contact-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.contact-links li {
+  margin-bottom: 1rem;
+}
+
+/* Hero specific layouts */
+.hero-intro {
+  font-size: 1rem;
+  font-weight: 300;
+  margin-bottom: 3rem;
+  opacity: 0.7;
+  letter-spacing: 0.02em;
+}
+
+.hero-description {
+  max-width: 600px;
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.7;
+  margin-bottom: 4rem;
+  opacity: 0.8;
+}
+
+.hero-links {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+/* Footer */
+.footer {
+  padding: 4rem 0 2rem;
+  border-top: 1px solid rgba(26, 26, 26, 0.1);
+  text-align: center;
+}
+
+.footer p {
+  font-size: 0.8rem;
+  opacity: 0.4;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  body { 
+    margin: 0.5rem; 
+  }
+  
+  .website-frame {
+    top: 0.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+    bottom: 0.5rem;
+  }
+  
+  .nav {
+    position: static;
+    padding: 2rem;
+    justify-content: center;
+  }
+  
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .about, .projects, .contact {
+    padding: 4rem 0;
+  }
+  
+  .about-grid, .projects-grid, .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .about-label, .projects-label, .contact-label {
+    position: static;
+    margin-bottom: 1rem;
+  }
+  
+  .about-stats {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .hero-links {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .frame-corner::after {
+    display: none;
+  }
+}
+
+/* Tablet responsive */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .container {
+    padding: 0 3rem;
+  }
+  
+  .about-grid, .projects-grid, .contact-grid {
+    gap: 3rem;
+  }
+  
+  .about, .projects, .contact {
+    padding: 6rem 0;
+  }
+}
+
+/* Large screen adjustments */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1400px;
+  }
+  
+  .about-grid, .projects-grid, .contact-grid {
+    gap: 6rem;
+  }
+}

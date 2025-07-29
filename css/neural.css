@@ -1,0 +1,256 @@
+/* Neural Canvas */
+#neuralCanvas {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  width: calc(100vw - 2rem);
+  height: calc(100vh - 2rem);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 1;
+}
+
+/* Neural Flow Container */
+.neural-flow {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  width: calc(100vw - 2rem);
+  height: calc(100vh - 2rem);
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Neural Indicator */
+.neural-indicator {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  width: 40px;
+  height: 40px;
+  z-index: 100;
+}
+
+.neural-dot {
+  width: 4px;
+  height: 4px;
+  background: #1a1a1a;
+  border-radius: 50%;
+  position: absolute;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.neural-dot:nth-child(1) { 
+  top: 5px; 
+  left: 5px; 
+  animation-delay: 0s; 
+}
+
+.neural-dot:nth-child(2) { 
+  top: 5px; 
+  right: 5px; 
+  animation-delay: 0.3s; 
+}
+
+.neural-dot:nth-child(3) { 
+  bottom: 5px; 
+  left: 5px; 
+  animation-delay: 0.6s; 
+}
+
+.neural-dot:nth-child(4) { 
+  bottom: 5px; 
+  right: 5px; 
+  animation-delay: 0.9s; 
+}
+
+/* Data Streams */
+.data-stream {
+  position: absolute;
+  width: 2px;
+  background: linear-gradient(180deg, 
+    transparent, 
+    rgba(255, 140, 60, 0.4), 
+    rgba(255, 180, 100, 0.6), 
+    rgba(255, 120, 40, 0.5), 
+    rgba(255, 200, 120, 0.3), 
+    transparent);
+  pointer-events: none;
+  animation: stream-flow 6s linear infinite;
+  box-shadow: 0 0 8px rgba(255, 140, 60, 0.3);
+  border-radius: 1px;
+  transform: translateY(-100px);
+  opacity: 0;
+}
+
+.data-stream.warm-variant {
+  background: linear-gradient(180deg, 
+    transparent, 
+    rgba(255, 100, 80, 0.5), 
+    rgba(255, 160, 120, 0.7), 
+    rgba(255, 80, 60, 0.6), 
+    rgba(255, 180, 140, 0.4), 
+    transparent);
+  box-shadow: 0 0 10px rgba(255, 100, 80, 0.4);
+}
+
+.data-stream.golden-variant {
+  background: linear-gradient(180deg, 
+    transparent, 
+    rgba(255, 200, 100, 0.4), 
+    rgba(255, 220, 140, 0.6), 
+    rgba(255, 180, 80, 0.5), 
+    rgba(255, 240, 160, 0.3), 
+    transparent);
+  box-shadow: 0 0 12px rgba(255, 200, 100, 0.3);
+}
+
+/* Floating Nodes */
+.neural-node {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 140, 60, 0.15);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: float-node 12s ease-in-out infinite;
+  box-shadow: 0 0 8px rgba(255, 140, 60, 0.2);
+}
+
+/* Pulse Waves */
+.pulse-wave {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 140, 60, 0.2);
+  pointer-events: none;
+  animation: pulse-expand 4s ease-out infinite;
+  transform: scale(0);
+  opacity: 1;
+}
+
+.pulse-wave::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 140, 60, 0.1) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  animation: pulse-glow 4s ease-out infinite;
+}
+
+/* Code Generation */
+.code-snippet {
+  position: absolute;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  color: rgba(255, 140, 60, 0.8);
+  pointer-events: none;
+  white-space: nowrap;
+  animation: code-type-out 3s ease-out forwards;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 2px 4px;
+  border-radius: 2px;
+  border-left: 2px solid rgba(255, 140, 60, 0.4);
+  opacity: 0;
+  transform: scale(0.8) translateY(10px);
+  max-width: 0;
+  overflow: hidden;
+}
+
+.code-snippet.variant-1 {
+  color: rgba(255, 180, 100, 0.8);
+  border-left-color: rgba(255, 180, 100, 0.4);
+}
+
+.code-snippet.variant-2 {
+  color: rgba(255, 120, 80, 0.8);
+  border-left-color: rgba(255, 120, 80, 0.4);
+}
+
+.code-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 12px;
+  background: rgba(255, 140, 60, 0.8);
+  margin-left: 1px;
+  animation: cursor-blink 0.8s infinite;
+}
+
+/* Flow particles */
+.flow-particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(26, 26, 26, 0.15);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.3;
+  transition: all 15s ease-in-out;
+}
+
+.flow-particle.warm {
+  background: rgba(255, 140, 60, 0.3);
+  box-shadow: 0 0 6px rgba(255, 140, 60, 0.4);
+}
+
+/* Mobile neural adjustments */
+@media (max-width: 768px) {
+  #neuralCanvas,
+  .neural-flow {
+    top: 0.5rem;
+    left: 0.5rem;
+    width: calc(100vw - 1rem);
+    height: calc(100vh - 1rem);
+  }
+  
+  .neural-indicator {
+    top: 1rem;
+    left: 1rem;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .neural-dot {
+    width: 3px;
+    height: 3px;
+  }
+  
+  .data-stream {
+    width: 1.5px;
+    animation-duration: 4s;
+  }
+  
+  .code-snippet {
+    font-size: 8px;
+    padding: 1px 3px;
+  }
+  
+  .neural-node {
+    width: 3px;
+    height: 3px;
+  }
+  
+  .pulse-wave {
+    animation-duration: 3s;
+  }
+}
+
+/* Performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+  .data-stream,
+  .neural-node,
+  .pulse-wave,
+  .code-snippet {
+    animation: none;
+    opacity: 0.3;
+  }
+  
+  .neural-dot {
+    animation: none;
+    opacity: 0.5;
+  }
+}

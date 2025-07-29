@@ -21,6 +21,234 @@
   }
 }
 
+/* NEURAL BORDER CARD ANIMATIONS */
+
+/* Falling Node Animations */
+@keyframes fall-to-corner-tl {
+  0% {
+    top: -20px;
+    left: 50%;
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    top: 20px;
+    left: 20px;
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fall-to-corner-tr {
+  0% {
+    top: -20px;
+    right: 50%;
+    opacity: 0;
+    transform: translateX(50%);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    top: 20px;
+    right: 20px;
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fall-to-corner-br {
+  0% {
+    bottom: -20px;
+    right: 30%;
+    opacity: 0;
+    transform: translateX(30%);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    bottom: 20px;
+    right: 20px;
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fall-to-corner-bl {
+  0% {
+    bottom: -20px;
+    left: 70%;
+    opacity: 0;
+    transform: translateX(-70%);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    bottom: 20px;
+    left: 20px;
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fall-to-top-edge {
+  0% {
+    top: -20px;
+    left: 30%;
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    top: 20px;
+    left: 50%;
+    opacity: 1;
+  }
+}
+
+@keyframes fall-to-right-edge {
+  0% {
+    top: -20px;
+    right: 10%;
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    top: 50%;
+    right: 20px;
+    opacity: 1;
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes fall-to-bottom-edge {
+  0% {
+    bottom: -20px;
+    left: 60%;
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    bottom: 20px;
+    left: 60%;
+    opacity: 1;
+  }
+}
+
+@keyframes fall-to-left-edge {
+  0% {
+    top: -20px;
+    left: 5%;
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    top: 60%;
+    left: 20px;
+    opacity: 1;
+  }
+}
+
+/* Border Drawing Animations */
+@keyframes draw-top-1 {
+  0% { width: 0; opacity: 0; }
+  20% { opacity: 1; }
+  100% { width: calc(50% - 10px); opacity: 1; }
+}
+
+@keyframes draw-top-2 {
+  0% { width: 0; opacity: 0; transform: translateX(-50%); }
+  20% { opacity: 1; }
+  100% { width: calc(50% - 30px); opacity: 1; transform: translateX(-50%); }
+}
+
+@keyframes draw-right-1 {
+  0% { height: 0; opacity: 0; }
+  20% { opacity: 1; }
+  100% { height: calc(50% - 30px); opacity: 1; }
+}
+
+@keyframes draw-right-2 {
+  0% { height: 0; opacity: 0; transform: translateY(-50%); }
+  20% { opacity: 1; }
+  100% { height: calc(50% - 30px); opacity: 1; transform: translateY(-50%); }
+}
+
+@keyframes draw-bottom-1 {
+  0% { width: 0; opacity: 0; }
+  20% { opacity: 1; }
+  100% { width: calc(40% - 10px); opacity: 1; }
+}
+
+@keyframes draw-bottom-2 {
+  0% { width: 0; opacity: 0; }
+  20% { opacity: 1; }
+  100% { width: calc(40% - 10px); opacity: 1; }
+}
+
+@keyframes draw-left-1 {
+  0% { height: 0; opacity: 0; }
+  20% { opacity: 1; }
+  100% { height: calc(40% - 20px); opacity: 1; }
+}
+
+@keyframes draw-left-2 {
+  0% { height: 0; opacity: 0; }
+  20% { opacity: 1; }
+  100% { height: calc(40% - 20px); opacity: 1; }
+}
+
+/* Connection Pulse Animations */
+@keyframes pulse-travel-1 {
+  0% { top: 23px; left: 23px; opacity: 0; }
+  25% { opacity: 1; }
+  50% { top: 23px; right: 23px; opacity: 1; }
+  75% { opacity: 0.5; }
+  100% { top: 23px; left: 23px; opacity: 0; }
+}
+
+@keyframes pulse-travel-2 {
+  0% { top: 23px; right: 23px; opacity: 0; }
+  25% { opacity: 1; }
+  50% { bottom: 23px; right: 23px; opacity: 1; }
+  75% { opacity: 0.5; }
+  100% { top: 23px; right: 23px; opacity: 0; }
+}
+
+@keyframes pulse-travel-3 {
+  0% { bottom: 23px; right: 23px; opacity: 0; }
+  25% { opacity: 1; }
+  50% { bottom: 23px; left: 23px; opacity: 1; }
+  75% { opacity: 0.5; }
+  100% { bottom: 23px; right: 23px; opacity: 0; }
+}
+
+/* Neural Card Indicator Pulse */
+@keyframes pulse-dot {
+  0%, 100% { 
+    opacity: 0.4; 
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(255, 140, 60, 0.4);
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1.3);
+    box-shadow: 0 0 8px rgba(255, 140, 60, 0.8);
+  }
+}
+
 @keyframes float-node {
   0%, 100% {
     transform: translateY(0px) translateX(0px);
@@ -110,15 +338,6 @@
     opacity: 0; 
     transform: scale(0.9) translateY(-5px); 
     max-width: 200px; 
-  }
-}
-
-@keyframes cursor-blink {
-  0%, 50% { 
-    opacity: 1; 
-  }
-  51%, 100% { 
-    opacity: 0; 
   }
 }
 
@@ -392,6 +611,94 @@
 .frame-corner:nth-child(3) { animation-delay: 2s; }
 .frame-corner:nth-child(4) { animation-delay: 3s; }
 
+/* AUTOMATION STATION ANIMATIONS */
+
+/* Icon Animations */
+@keyframes pulse-circuit {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes code-pulse {
+  0%, 100% {
+    color: rgba(255, 140, 60, 0.6);
+    text-shadow: 0 0 0 rgba(255, 140, 60, 0.3);
+  }
+  50% {
+    color: rgba(255, 140, 60, 1);
+    text-shadow: 0 0 10px rgba(255, 140, 60, 0.6);
+  }
+}
+
+@keyframes cursor-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes neural-pulse {
+  0%, 100% {
+    opacity: 0.6;
+    filter: brightness(1);
+  }
+  33% {
+    opacity: 1;
+    filter: brightness(1.3);
+  }
+  66% {
+    opacity: 0.8;
+    filter: brightness(1.1);
+  }
+}
+
+@keyframes connection-flow {
+  0% {
+    opacity: 0.3;
+    transform: translateX(-5px);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateX(0px);
+  }
+  100% {
+    opacity: 0.3;
+    transform: translateX(5px);
+  }
+}
+
+/* Construction Animations */
+@keyframes construction-sweep {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+@keyframes building-animation {
+  0%, 100% {
+    transform: translateY(0);
+    background: rgba(255, 140, 60, 0.3);
+  }
+  50% {
+    transform: translateY(-8px);
+    background: rgba(255, 140, 60, 0.7);
+  }
+}
+
+@keyframes progress-fill {
+  0% { width: 0%; }
+  50% { width: 70%; }
+  100% { width: 0%; }
+}
+
+@keyframes bounce-horizontal {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(10px); }
+}
+
 /* Responsive animation adjustments */
 @media (max-width: 768px) {
   .hero-link:hover {
@@ -443,5 +750,13 @@
   
   .glitch-word {
     animation: none !important;
+  }
+  
+  /* Disable neural border animations for reduced motion */
+  .falling-node,
+  .border-segment,
+  .connection-pulse {
+    animation: none !important;
+    opacity: 0.3;
   }
 }

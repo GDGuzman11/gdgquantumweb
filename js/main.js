@@ -2,7 +2,7 @@
 import { initCursor } from './cursor.js';
 import { initNeuralCanvas } from './neural-canvas.js';
 import { initNeuralFlow } from './neural-flow.js';
-import { initInteractions } from './interactions.js';
+import { initInteractions, initEnhancedContactForm } from './interactions.js';
 import { initScrollEffects, initFormHandling, logPerformance, initErrorHandling } from './utils.js';
 
 // 🔥 GLITCH ANIMATION FUNCTION
@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initNeuralCanvas();
     initNeuralFlow();
     initInteractions();
+    initEnhancedContactForm
     initScrollEffects();
     initFormHandling();
     initErrorHandling();

@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/neural.css">
+  <link rel="stylesheet" href="css/contact-enhanced.css">
 </head>
 <body>
   <!-- Website Frame -->
@@ -42,77 +43,245 @@
   <!-- Neural Canvas -->
   <canvas id="neuralCanvas"></canvas>
 
-  <!-- Navigation -->
-  <nav class="nav">
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <!-- Main Content Container -->
+  <div class="content-stage">
+    
+    <!-- Hero Page (Default View) -->
+    <div class="content-card active" id="hero-card">
+      <div class="hero-page">
+        <!-- Left Side: Hero Content -->
+        <div class="hero-left">
+          <p class="hero-intro">Gabriel De Guzman — Born 1989, Canada</p>
+          <h1 class="hero-title">
+            Here at <span class="highlight">GDG Quantum Inc.</span><br>
+            we make the<br>i<span class="glitch-text"><span class="glitch-word" id="mpossible">mpossible.</span><span class="glitch-word hidden" id="nevitable">nevitable.</span></span>
+          </h1>
+          <p class="hero-description">
+            Every system has a breaking point. Every problem has a solution. We find both, then build AI that bridges the gap between what is and what could be.
+          </p>
+          <div class="hero-links">
+            <a href="mailto:gabe@gdgquantuminc.com" class="hero-link">Direct email</a>
+            <a href="https://linkedin.com/in/gabe-de-guzman" class="hero-link">LinkedIn profile</a>
+            <a href="https://github.com/GDGuzman11" class="hero-link">GitHub repository</a>
+          </div>
+        </div>
 
-  <div class="container">
-    <!-- Hero Section -->
-    <section class="hero">
-      <p class="hero-intro">Gabriel De Guzman — Born 1989, Canada</p>
-        <h1 class="hero-title">
-        Here at <span class="highlight">GDG Quantum Inc.</span><br>
-        we make the i<span class="glitch-text"><span class="glitch-word" id="mpossible">mpossible.</span><span class="glitch-word hidden" id="nevitable">nevitable.</span></span>
-      </h1>
-      <p class="hero-description">
-        Every system has a breaking point. Every problem has a solution. We find both, then build AI that bridges the gap between what is and what could be.
-      </p>
-      <div class="hero-links">
-        <a href="#projects" class="hero-link">View current projects</a>
-        <a href="#contact" class="hero-link">Start a conversation</a>
-        <a href="mailto:gabe@gdgquantuminc.com" class="hero-link">Direct email</a>
-      </div>
-    </section>
+        <!-- Right Side: Neural Border Navigation Card -->
+        <div class="neural-border-card">
+          <!-- Neural Border Effects -->
+          <div class="neural-border">
+            <!-- Falling Neural Nodes -->
+            <div class="falling-node"></div>
+            <div class="falling-node"></div>
+            <div class="falling-node"></div>
+            <div class="falling-node"></div>
+            <div class="falling-node"></div>
+            <div class="falling-node"></div>
+            <div class="falling-node"></div>
+            <div class="falling-node"></div>
+            
+            <!-- Connection Pulses -->
+            <div class="connection-pulse"></div>
+            <div class="connection-pulse"></div>
+            <div class="connection-pulse"></div>
+            
+            <!-- Border Segments that Draw as Nodes Connect -->
+            <div class="border-segment top-1"></div>
+            <div class="border-segment top-2"></div>
+            <div class="border-segment right-1"></div>
+            <div class="border-segment right-2"></div>
+            <div class="border-segment bottom-1"></div>
+            <div class="border-segment bottom-2"></div>
+            <div class="border-segment left-1"></div>
+            <div class="border-segment left-2"></div>
+          </div>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-      <div class="about-grid">
-        <div class="about-label">About</div>
-        <div class="about-content">
-          <h2>Every solution starts with understanding the problem.</h2>
-          <p>
-            I'm a systems analyst turned AI builder with a mission to create technology 
-            that serves humanity. Founded GDG Quantum Inc. to develop ethical AI tools 
-            that tackle real challenges in hiring and cybersecurity.
-          </p>
-          <p>
-            My approach is methodical: identify genuine pain points, analyze the system, 
-            build solutions that work. No venture capital pressures, no data harvesting—just 
-            thoughtful automation that makes meaningful work more accessible.
-          </p>
-          <p>
-            Based in Canada, working globally, always building for the long term.
-          </p>
-          
-          <div class="about-stats">
-            <div class="stat">
-              <div class="stat-number">2019</div>
-              <div class="stat-label">Started in systems analysis</div>
+          <!-- Card Content -->
+          <div class="card-header">
+            <div class="neural-indicator-card">
+              <div class="neural-dot"></div>
+              <div class="neural-dot"></div>
+              <div class="neural-dot"></div>
+              <div class="neural-dot"></div>
             </div>
-            <div class="stat">
-              <div class="stat-number">2024</div>
+            <div class="card-title">AI Navigation</div>
+          </div>
+          
+          <nav class="neural-nav">
+            <a href="#" data-target="about-card">About</a>
+            <a href="#" data-target="projects-card">Projects</a>
+            <a href="#" data-target="tools-card">Automation Station</a>
+            <a href="#" data-target="contact-card">Contact</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Content Card -->
+    <div class="content-card" id="about-card">
+      <div class="content-header">
+        <button class="back-btn" data-target="hero-card">
+          <span class="back-arrow">←</span>
+          <span class="back-text">Back</span>
+        </button>
+        <div class="content-title">About</div>
+      </div>
+      
+      <div class="about-content-wrapper">
+        <!-- About Header -->
+        <header class="about-header">
+          <div class="about-intro">Gabriel De Guzman — Born 1989, Canada</div>
+          <h1 class="about-title">
+            Every solution starts with<br>
+            <span class="highlight">understanding the problem.</span>
+          </h1>
+          <p class="about-subtitle">
+            From systems analyst to AI builder. Here's the story of how frustration 
+            with broken systems led to building ethical AI tools.
+          </p>
+        </header>
+
+        <!-- Story Content -->
+        <div class="story-sections">
+          <!-- Origin Story -->
+          <section class="story-section">
+            <div class="section-marker">01</div>
+            <div class="section-content">
+              <h2>The Learning Journey</h2>
+              <p>
+                In 2018, I made a decision that would change everything: go back to school 
+                for Software Development. As a father of two, balancing family life with 
+                learning new technologies wasn't easy, but it taught me something invaluable—
+                persistence pays off, and great solutions come from understanding real problems.
+              </p>
+              <p>
+                By 2022, I started recognizing patterns everywhere. Watching people around me 
+                struggle with unnecessary manual tasks that could be automated to help them 
+                focus on what truly mattered. These weren't just observations—they were 
+                opportunities waiting to be solved. Every inefficiency I witnessed became 
+                an idea, every frustration a potential breakthrough.
+              </p>
+            </div>
+          </section>
+
+          <!-- Transition -->
+          <section class="story-section">
+            <div class="section-marker">02</div>
+            <div class="section-content">
+              <h2>From Ideas to Action</h2>
+              <p>
+                In 2023, those ideas crystallized into something concrete when I founded 
+                <strong>GDG Quantum Inc.</strong> What started as scattered thoughts about 
+                automation became a focused mission. While maintaining my 9-5, I slowly 
+                began integrating meaningful programs that could automate workflows without 
+                losing the human touch.
+              </p>
+              <p>
+                With each passing month, I found myself drawn deeper into exploring how far 
+                AI could be pushed. Not just as a tool, but as a bridge between "what is" 
+                and "what could be." Every project became a stepping stone toward understanding 
+                the true potential of thoughtful automation.
+              </p>
+            </div>
+          </section>
+
+          <!-- Philosophy -->
+          <section class="story-section">
+            <div class="section-marker">03</div>
+            <div class="section-content">
+              <h2>The Human-Centered Approach</h2>
+              <p>
+                Every tool we build starts with a human frustration. Our AI resume optimizer 
+                exists because the current job application process is broken—talented candidates 
+                getting filtered out by systems that can't recognize potential. Aegis, our 
+                long-term cybersecurity training platform, addresses the gap between theoretical 
+                knowledge and practical application.
+              </p>
+              <p>
+                I'm constantly pushing the boundaries of "what is" to discover "what could be," 
+                but never at the expense of human connection. My approach is methodical: identify 
+                genuine pain points, understand the human impact, then build solutions that 
+                preserve the essence of human work while eliminating the friction that holds 
+                people back.
+              </p>
+            </div>
+          </section>
+
+          <!-- Current Focus -->
+          <section class="story-section">
+            <div class="section-marker">04</div>
+            <div class="section-content">
+              <h2>Building for the Long Term</h2>
+              <p>
+                Today, I'm focused on growing GDG Quantum Inc. with the same persistence that 
+                got me here. We're building tools that will matter in 10 years, not just capture 
+                attention for 10 minutes. Based in Canada, working globally, always learning, 
+                never giving up on finding better ways to solve complex problems.
+              </p>
+              <p>
+                When you choose to work with me, you're not just getting a solution—you're 
+                getting a partner committed to your long-term success. Because the best 
+                automation doesn't just solve today's problems; it adapts to tomorrow's challenges 
+                while keeping humans at the center of every decision.
+              </p>
+            </div>
+          </section>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="about-stats">
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-number">2018</div>
+              <div class="stat-label">Returned to school for development</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">2022</div>
+              <div class="stat-label">Started recognizing automation opportunities</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">2023</div>
               <div class="stat-label">Founded GDG Quantum Inc.</div>
             </div>
-            <div class="stat">
+            <div class="stat-item">
               <div class="stat-number">∞</div>
               <div class="stat-label">Problems left to solve</div>
             </div>
-            <div class="stat">
-              <div class="stat-number">100%</div>
-              <div class="stat-label">Ethical commitment</div>
-            </div>
+          </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="about-contact">
+          <h3>Let's solve problems together</h3>
+          <div class="contact-links">
+            <a href="mailto:gabe@gdgquantuminc.com" class="contact-link">
+              <span class="link-label">Email</span>
+              <span class="link-value">gabe@gdgquantuminc.com</span>
+            </a>
+            <a href="https://linkedin.com/in/gabe-de-guzman" class="contact-link">
+              <span class="link-label">LinkedIn</span>
+              <span class="link-value">Connect professionally</span>
+            </a>
+            <a href="https://github.com/GDGuzman11" class="contact-link">
+              <span class="link-label">GitHub</span>
+              <span class="link-value">See the code</span>
+            </a>
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-      <div class="projects-grid">
-        <div class="projects-label">Projects</div>
+    <!-- Projects Content Card -->
+    <div class="content-card" id="projects-card">
+      <div class="content-header">
+        <button class="back-btn" data-target="hero-card">
+          <span class="back-arrow">←</span>
+          <span class="back-text">Back</span>
+        </button>
+        <div class="content-title">Projects</div>
+      </div>
+      
+      <div class="projects-content-wrapper">
         <div class="projects-intro">
           <h2>Tools for tomorrow, built today.</h2>
           <p>
@@ -120,96 +289,309 @@
             All built with ethical AI principles and real-world impact in mind.
           </p>
         </div>
+
+        <ul class="project-list">
+          <li class="project-item">
+            <div class="project-info">
+              <h3>AI Resume Optimizer</h3>
+              <p class="project-description">
+                AI-powered resume optimization that beats ATS systems while fighting hiring inequality. 
+                Ethical automation for job seekers.
+              </p>
+            </div>
+            <div class="project-status">In Development</div>
+            <div class="project-year">2025</div>
+          </li>
+
+          <li class="project-item">
+            <div class="project-info">
+              <h3>Aegis</h3>
+              <p class="project-description">
+                Cybersecurity defense simulator for hands-on threat training. 
+                Real scenarios, safe environment.
+              </p>
+            </div>
+            <div class="project-status">Planning</div>
+            <div class="project-year">2025</div>
+          </li>
+
+          <li class="project-item">
+            <div class="project-info">
+              <h3>Neural Canvas</h3>
+              <p class="project-description">
+                Interactive particle systems for web interfaces. 
+                Open-source tool for developers.
+              </p>
+            </div>
+            <div class="project-status">Prototype</div>
+            <div class="project-year">2024</div>
+          </li>
+
+          <li class="project-item">
+            <div class="project-info">
+              <h3>GDG Quantum Inc.</h3>
+              <p class="project-description">
+                Ethical AI company focused on automation that serves humanity. 
+                Building the future of work.
+              </p>
+            </div>
+            <div class="project-status">Active</div>
+            <div class="project-year">2024</div>
+          </li>
+        </ul>
       </div>
+    </div>
 
-      <ul class="project-list">
-        <li class="project-item">
-          <div class="project-info">
-            <h3>Resum8</h3>
-            <p class="project-description">
-              AI-powered resume optimization that beats ATS systems while fighting hiring inequality. 
-              Ethical automation for job seekers.
-            </p>
-          </div>
-          <div class="project-status">In Development</div>
-          <div class="project-year">2025</div>
-        </li>
+    <!-- Tools Content Card -->
+    <div class="content-card" id="tools-card">
+      <div class="content-header">
+        <button class="back-btn" data-target="hero-card">
+          <span class="back-arrow">←</span>
+          <span class="back-text">Back</span>
+        </button>
+        <div class="content-title">Automation Station</div>
+      </div>
+      
+      <div class="tools-content-wrapper">
+        <div class="section-header">
+          <h2 class="section-title">Automation Station</h2>
+          <p class="section-subtitle">
+            Tools that eliminate frustration and amplify human potential. Each one built to solve a real problem I've personally faced.
+          </p>
+        </div>
 
-        <li class="project-item">
-          <div class="project-info">
-            <h3>Aegis</h3>
-            <p class="project-description">
-              Cybersecurity defense simulator for hands-on threat training. 
-              Real scenarios, safe environment.
-            </p>
-          </div>
-          <div class="project-status">Planning</div>
-          <div class="project-year">2025</div>
-        </li>
-
-        <li class="project-item">
-          <div class="project-info">
-            <h3>Neural Canvas</h3>
-            <p class="project-description">
-              Interactive particle systems for web interfaces. 
-              Open-source tool for developers.
-            </p>
-          </div>
-          <div class="project-status">Prototype</div>
-          <div class="project-year">2024</div>
-        </li>
-
-        <li class="project-item">
-          <div class="project-info">
-            <h3>GDG Quantum Inc.</h3>
-            <p class="project-description">
-              Ethical AI company focused on automation that serves humanity. 
-              Building the future of work.
-            </p>
-          </div>
-          <div class="project-status">Active</div>
-          <div class="project-year">2024</div>
-        </li>
-      </ul>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-      <div class="contact-grid">
-        <div class="contact-label">Contact</div>
-        <div class="contact-content">
-          <h2>Let's build something meaningful together.</h2>
-          
-          <ul class="contact-links">
-            <li><a href="mailto:gabe@gdgquantuminc.com">gabe@gdgquantuminc.com</a></li>
-            <li><a href="https://linkedin.com/in/gabrieldeguzman">LinkedIn</a></li>
-            <li><a href="https://github.com/GDGuzman11">GitHub</a></li>
-            <li><a href="tel:+1234567890">Schedule a call</a></li>
-          </ul>
-
-          <form class="contact-form" id="contactForm">
-            <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
-            
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" required>
+        <div class="tools-carousel">
+          <!-- ResumeForge Card -->
+          <div class="tool-card">
+            <div class="card-inner">
+              <!-- Front Side -->
+              <div class="card-front">
+                <div class="neural-accent"></div>
+                <div class="card-header">
+                  <div class="tool-icon icon-resume"></div>
+                  <h3 class="tool-name">AI Resume Optimizer</h3>
+                </div>
+                <div class="card-content">
+                  <p class="tool-preview">AI-powered resume optimization that beats ATS systems and levels the playing field.</p>
+                </div>
+                <div class="card-footer">
+                  <span class="tool-status beta">In Development</span>
+                </div>
+              </div>
+              
+              <!-- Back Side -->
+              <div class="card-back">
+                <div class="neural-accent"></div>
+                <div class="card-header">
+                  <h3 class="tool-name">AI Resume Optimizer</h3>
+                </div>
+                <div class="card-content">
+                  <p class="tool-description">
+                    Stop losing opportunities to poorly optimized resumes. Our AI analyzes and transforms your resume for maximum ATS compatibility.
+                  </p>
+                  <ul class="tool-features">
+                    <li>ATS compatibility scoring</li>
+                    <li>Intelligent keyword optimization</li>
+                    <li>Format standardization</li>
+                    <li>Industry-specific templates</li>
+                  </ul>
+                </div>
+                <div class="card-footer">
+                  <button class="tool-cta">Join Beta Waitlist</button>
+                </div>
+              </div>
             </div>
-            
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required>
+          </div>
+
+          <!-- Project Alpha Card -->
+          <div class="tool-card">
+            <div class="card-inner">
+              <!-- Front Side -->
+              <div class="card-front">
+                <div class="neural-accent"></div>
+                <div class="card-header">
+                  <div class="tool-icon icon-alpha construction-icon"></div>
+                  <h3 class="tool-name">Project Alpha</h3>
+                </div>
+                <div class="card-content">
+                  <p class="tool-preview">Revolutionary automation tool in early development. Stay tuned for something special.</p>
+                  <div class="building-blocks">
+                    <div class="block"></div>
+                    <div class="block"></div>
+                    <div class="block"></div>
+                    <div class="block"></div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <span class="tool-status coming-soon">Coming Soon</span>
+                  <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Back Side -->
+              <div class="card-back">
+                <div class="neural-accent"></div>
+                <div class="card-header">
+                  <h3 class="tool-name">Project Alpha</h3>
+                </div>
+                <div class="card-content">
+                  <p class="tool-description">
+                    Something powerful is brewing in the lab. This tool will solve a problem that millions face daily, but we're not ready to reveal it yet.
+                  </p>
+                  <ul class="tool-features">
+                    <li>AI-powered automation</li>
+                    <li>Seamless integration</li>
+                    <li>Time-saving workflow</li>
+                    <li>User-friendly interface</li>
+                  </ul>
+                </div>
+                <div class="card-footer">
+                  <button class="tool-cta" disabled>Notify When Ready</button>
+                </div>
+              </div>
             </div>
-            
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" required placeholder="Tell me about your project or idea..."></textarea>
+          </div>
+
+          <!-- Aegis Card -->
+          <div class="tool-card">
+            <div class="card-inner">
+              <!-- Front Side -->
+              <div class="card-front">
+                <div class="neural-accent"></div>
+                <div class="card-header">
+                  <div class="tool-icon icon-gamma construction-icon"></div>
+                  <h3 class="tool-name">Aegis</h3>
+                </div>
+                <div class="card-content">
+                  <p class="tool-preview">Cybersecurity defense simulator for hands-on threat training in safe environments.</p>
+                  <div class="building-blocks">
+                    <div class="block"></div>
+                    <div class="block"></div>
+                    <div class="block"></div>
+                    <div class="block"></div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <span class="tool-status coming-soon">Long Term</span>
+                  <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Back Side -->
+              <div class="card-back">
+                <div class="neural-accent"></div>
+                <div class="card-header">
+                  <h3 class="tool-name">Aegis</h3>
+                </div>
+                <div class="card-content">
+                  <p class="tool-description">
+                    Bridge the gap between theoretical cybersecurity knowledge and practical application with realistic threat simulations.
+                  </p>
+                  <ul class="tool-features">
+                    <li>Real threat scenarios</li>
+                    <li>Safe training environment</li>
+                    <li>Hands-on experience</li>
+                    <li>Progressive difficulty</li>
+                  </ul>
+                </div>
+                <div class="card-footer">
+                  <button class="tool-cta" disabled>Coming Later</button>
+                </div>
+              </div>
             </div>
-            
-            <button type="submit" class="submit-btn">Send Message</button>
-          </form>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+
+    <!-- Contact Content Card -->
+    <!-- Contact Content Card -->
+<div class="content-card" id="contact-card">
+  <div class="content-header">
+    <button class="back-btn" data-target="hero-card">
+      <span class="back-arrow">←</span>
+      <span class="back-text">Back</span>
+    </button>
+    <div class="content-title">Contact</div>
+  </div>
+  
+  <div class="contact-content-wrapper">
+    <!-- Contact Info Section -->
+    <div class="contact-info-section">
+      <h3 class="contact-info-title">Get in touch</h3>
+      
+      <!-- Floating Contact Cards -->
+      <div class="contact-card">
+        <div class="contact-icon icon-email"></div>
+        <h3>Email</h3>
+        <p>gabe@gdgquantuminc.com</p>
+        <p class="contact-subtitle">Usually responds within 24 hours</p>
+      </div>
+      
+      <div class="contact-card">
+        <div class="contact-icon icon-network"></div>
+        <h3>LinkedIn</h3>
+        <p>Connect professionally</p>
+        <p class="contact-subtitle">Let's build networks</p>
+      </div>
+      
+      <div class="contact-card">
+        <div class="contact-icon icon-code"></div>
+        <h3>GitHub</h3>
+        <p>See the code in action</p>
+        <p class="contact-subtitle">Open source collaboration</p>
+      </div>
+    </div>
+
+    <!-- Enhanced Form Container -->
+    <div class="form-container">
+      <h2>Let's build something meaningful together.</h2>
+      <p class="contact-form-subtitle">Tell me about your vision</p>
+      
+      <!-- Progress Indicator -->
+      <div class="progress-label">Form Progress</div>
+      <div class="form-progress">
+        <div class="progress-fill"></div>
+      </div>
+      
+      <form class="contact-form" id="contactForm">
+        <!-- Honeypot for spam protection -->
+        <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
+        
+        <!-- Enhanced Form Groups with Floating Labels -->
+        <div class="form-group">
+          <input type="text" id="name" name="name" placeholder=" " required>
+          <label for="name">Your Name</label>
+        </div>
+        
+        <div class="form-group">
+          <input type="email" id="email" name="email" placeholder=" " required>
+          <label for="email">Email Address</label>
+        </div>
+        
+        <!-- Message with Character Counter -->
+        <div class="form-group char-counter-container">
+          <textarea id="message" name="message" placeholder=" " rows="5" maxlength="500" required></textarea>
+          <label for="message">Tell me about your project or idea...</label>
+          <div class="char-counter">
+            <div class="char-ring"></div>
+            <span>0/500</span>
+          </div>
+        </div>
+        
+        <!-- Enhanced Submit Button -->
+        <button type="submit" class="submit-btn">
+          Send Message
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
   </div>
 
   <!-- Footer -->

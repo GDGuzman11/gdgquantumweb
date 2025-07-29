@@ -124,6 +124,11 @@ body:hover .frame-corner {
   border-top: 1px solid rgba(26, 26, 26, 0.1);
 }
 
+.automation-station {
+  padding: 8rem 0;
+  border-top: 1px solid rgba(26, 26, 26, 0.1);
+}
+
 .about-grid, .projects-grid, .contact-grid {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -245,6 +250,10 @@ body:hover .frame-corner {
     padding: 4rem 0;
   }
   
+  .automation-station {
+    padding: 4rem 0;
+  }
+  
   .about-grid, .projects-grid, .contact-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -281,6 +290,10 @@ body:hover .frame-corner {
   }
   
   .about, .projects, .contact {
+    padding: 6rem 0;
+  }
+  
+  .automation-station {
     padding: 6rem 0;
   }
 }

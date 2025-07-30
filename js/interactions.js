@@ -17,6 +17,8 @@ export function initInteractions() {
   
   // Initialize page load animations
   initPageLoadAnimations();
+
+  initMobileNavigation()
   
   console.log('🎯 Dynamic card system initialized');
 }
@@ -422,7 +424,7 @@ function initCursorInteractions() {
   
   neuralElements.forEach(el => {
     el.addEventListener('mouseenter', () => {
-      cursor.style.background = 'rgba(100, 116, 139, 0.8)';
+      cursor.style.background = 'rgba(255, 140, 60, 0.8)';
       cursor.style.borderColor = 'rgba(255, 180, 100, 0.8)';
       cursor.style.boxShadow = '0 0 20px rgba(255, 140, 60, 0.6)';
     });
@@ -748,386 +750,67 @@ window.addEventListener('error', (e) => {
   }
 });
 
+// Mobile navigation handling
+function initMobileNavigation() {
+  const mobileNav = document.querySelector('.mobile-sticky-nav');
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+  
+  // Show/hide mobile nav based on screen size
+  function toggleMobileNav() {
+    if (window.innerWidth <= 768) {
+      if (mobileNav) {
+        mobileNav.style.display = 'flex';
+      }
+    } else {
+      if (mobileNav) {
+        mobileNav.style.display = 'none';
+      }
+    }
+  }
+  
+  // Initial check
+  toggleMobileNav();
+  
+  // Listen for window resize
+  window.addEventListener('resize', toggleMobileNav);
+  
+  // Add click handlers for mobile nav links
+  mobileNavLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const targetCard = this.getAttribute('data-target');
+      if (targetCard) {
+        // Find current active card
+        const currentCard = document.querySelector('.content-card.active');
+        const targetCardElement = document.getElementById(targetCard);
+        
+        if (currentCard && targetCardElement) {
+          // Simple fade transition for mobile
+          currentCard.classList.remove('active');
+          currentCard.style.opacity = '0';
+          
+          setTimeout(() => {
+            currentCard.style.visibility = 'hidden';
+            targetCardElement.style.visibility = 'visible';
+            targetCardElement.style.opacity = '1';
+            targetCardElement.classList.add('active');
+            
+            // Scroll to top of new content
+            window.scrollTo(0, 0);
+          }, 300);
+        }
+      }
+    });
+  });
+  
+  console.log('📱 Mobile navigation initialized');
+}
+
 // Export for main.js integration
 export { 
   initCardNavigation, 
   initNeuralNavEffects, 
   createRippleEffect,
-  initPageLoadAnimations 
+  initPageLoadAnimations,
 };
-
-// Enhanced Contact Form with Security Features
-function initEnhancedContactForm() {
-  const inputs = document.querySelectorAll('#contactForm input:not(.honeypot), #contactForm textarea');
-  const progressFill = document.querySelector('.progress-fill');
-  const charCounter = document.querySelector('.char-counter span');
-  const charRing = document.querySelector('.char-ring');
-  const textarea = document.querySelector('#message');
-  const submitBtn = document.querySelector('.submit-btn');
-  
-  if (!progressFill || !charCounter || !charRing || !textarea) {
-    console.warn('Enhanced contact form elements not found');
-    return;
-  }
-  
-  // 🛡️ SECURITY FUNCTIONS
-  function sanitizeInput(input) {
-    return input
-      .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '') // Remove scripts
-      .replace(/javascript:/gi, '') // Remove javascript: protocols
-      .replace(/on\w+\s*=/gi, '') // Remove event handlers
-      .replace(/<[^>]*>/g, '') // Remove HTML tags
-      .replace(/[<>"'&]/g, '') // Remove potentially dangerous characters
-      .trim();
-  }
-  
-  // Malicious pattern detection
-  const blockedPatterns = [
-    /\b(hack|exploit|injection|malware|virus|trojan|phishing)\b/i,
-    /\b(script|iframe|object|embed|eval|alert)\b/i,
-    /(union\s+select|drop\s+table|delete\s+from|insert\s+into)/i, // SQL injection
-    /(\{|\[|\$|%|#|\*){3,}/g, // Suspicious character patterns
-    /(data:|vbscript:|livescript:)/i, // Dangerous protocols
-    /(\bor\b|\band\b).*(\=|\<|\>)/i // Basic SQL patterns
-  ];
-  
-  function validateContent(content) {
-    // First sanitize
-    const sanitized = sanitizeInput(content);
-    
-    // Check for blocked patterns
-    for (let pattern of blockedPatterns) {
-      if (pattern.test(sanitized)) {
-        return { 
-          valid: false, 
-          content: sanitized,
-          message: 'Content contains restricted terms or patterns' 
-        };
-      }
-    }
-    
-    // Check length limits
-    if (sanitized.length > 500 && content === textarea.value) {
-      return { 
-        valid: false, 
-        content: sanitized,
-        message: 'Message exceeds maximum length' 
-      };
-    }
-    
-    if (sanitized.length > 100 && content !== textarea.value) {
-      return { 
-        valid: false, 
-        content: sanitized,
-        message: 'Field exceeds maximum length' 
-      };
-    }
-    
-    // Check for empty content after sanitization
-    if (sanitized.length === 0 && content.length > 0) {
-      return {
-        valid: false,
-        content: sanitized,
-        message: 'Content removed due to security filters'
-      };
-    }
-    
-    return { valid: true, content: sanitized };
-  }
-  
-  // Rate limiting
-  let submitAttempts = 0;
-  let lastSubmitTime = 0;
-  const RATE_LIMIT_WINDOW = 60000; // 1 minute
-  const MAX_ATTEMPTS = 3;
-  
-  function checkRateLimit() {
-    const now = Date.now();
-    if (now - lastSubmitTime > RATE_LIMIT_WINDOW) {
-      submitAttempts = 0;
-    }
-    
-    if (submitAttempts >= MAX_ATTEMPTS) {
-      return {
-        allowed: false,
-        message: 'Too many submission attempts. Please wait before trying again.'
-      };
-    }
-    
-    return { allowed: true };
-  }
-  
-  // 📊 PROGRESS TRACKING
-  function updateProgress() {
-    const filledInputs = Array.from(inputs).filter(input => {
-      const validation = validateContent(input.value);
-      return validation.valid && validation.content.length > 0;
-    }).length;
-    
-    const progress = (filledInputs / inputs.length) * 100;
-    progressFill.style.width = progress + '%';
-    
-    // Update progress color based on completion
-    if (progress === 100) {
-      progressFill.style.background = 'linear-gradient(90deg, #22C55E, #16A34A)'; // Green when complete
-    } else {
-      progressFill.style.background = 'linear-gradient(90deg, #00D4FF, #0099CC)'; // Blue default
-    }
-  }
-  
-  // 🔢 CHARACTER COUNTER
-  function updateCharCounter() {
-    const validation = validateContent(textarea.value);
-    const count = validation.content.length;
-    charCounter.textContent = `${count}/500`;
-    
-    // Update ring state
-    if (count > 0) {
-      charRing.classList.add('active');
-    } else {
-      charRing.classList.remove('active');
-    }
-    
-    // Update colors based on validation
-    if (!validation.valid) {
-      charRing.classList.add('invalid');
-      charCounter.style.color = '#EF4444';
-    } else {
-      charRing.classList.remove('invalid');
-      charCounter.style.color = '#6B7280';
-    }
-    
-    // Warning at 90% capacity
-    if (count > 450) {
-      charCounter.style.color = '#F59E0B'; // Orange warning
-    }
-  }
-  
-  // 🔍 REAL-TIME VALIDATION
-  function validateInput(input) {
-    const validation = validateContent(input.value);
-    
-    // Visual feedback
-    if (!validation.valid) {
-      input.classList.add('invalid');
-      input.style.borderBottomColor = '#EF4444';
-      
-      // Show error tooltip
-      showValidationError(input, validation.message);
-    } else {
-      input.classList.remove('invalid');
-      input.style.borderBottomColor = '#00D4FF';
-      hideValidationError(input);
-      
-      // Update with sanitized content if different
-      if (validation.content !== input.value) {
-        input.value = validation.content;
-      }
-    }
-    
-    return validation;
-  }
-  
-  // Error tooltip system
-  function showValidationError(input, message) {
-    // Remove existing error
-    hideValidationError(input);
-    
-    const error = document.createElement('div');
-    error.className = 'validation-error';
-    error.style.cssText = `
-      position: absolute;
-      bottom: -2rem;
-      left: 0;
-      background: #EF4444;
-      color: white;
-      padding: 0.5rem 0.75rem;
-      border-radius: 6px;
-      font-size: 0.8rem;
-      white-space: nowrap;
-      z-index: 1000;
-      animation: fadeInUp 0.3s ease;
-    `;
-    error.textContent = message;
-    
-    input.parentElement.style.position = 'relative';
-    input.parentElement.appendChild(error);
-  }
-  
-  function hideValidationError(input) {
-    const existing = input.parentElement.querySelector('.validation-error');
-    if (existing) {
-      existing.remove();
-    }
-  }
-  
-  // 🎯 EVENT LISTENERS
-  inputs.forEach(input => {
-    // Real-time validation on input
-    input.addEventListener('input', (e) => {
-      validateInput(e.target);
-      updateProgress();
-    });
-    
-    // Validation on blur (when user leaves field)
-    input.addEventListener('blur', (e) => {
-      validateInput(e.target);
-    });
-    
-    // Clear errors on focus
-    input.addEventListener('focus', (e) => {
-      hideValidationError(e.target);
-    });
-  });
-  
-  // Character counter for textarea
-  textarea.addEventListener('input', updateCharCounter);
-  
-  // 🚀 ENHANCED FORM SUBMISSION
-  const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    // Remove existing event listener to avoid conflicts
-    contactForm.replaceWith(contactForm.cloneNode(true));
-    const newForm = document.getElementById('contactForm');
-    
-    newForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // Rate limiting check
-      const rateCheck = checkRateLimit();
-      if (!rateCheck.allowed) {
-        showSubmissionError(rateCheck.message);
-        return;
-      }
-      
-      // Honeypot check
-      const honeypot = this.querySelector('.honeypot');
-      if (honeypot && honeypot.value) {
-        console.warn('🚨 Spam detected via honeypot');
-        showSubmissionError('Spam detection triggered');
-        return;
-      }
-      
-      // Validate all inputs
-      const formInputs = this.querySelectorAll('input:not(.honeypot), textarea');
-      let allValid = true;
-      const formData = {};
-      
-      formInputs.forEach(input => {
-        const validation = validateInput(input);
-        if (!validation.valid) {
-          allValid = false;
-        } else {
-          formData[input.name] = validation.content;
-        }
-      });
-      
-      if (!allValid) {
-        showSubmissionError('Please correct the errors above');
-        return;
-      }
-      
-      // Update rate limiting
-      submitAttempts++;
-      lastSubmitTime = Date.now();
-      
-      // Show loading state
-      submitBtn.classList.add('loading');
-      submitBtn.textContent = 'Sending...';
-      submitBtn.disabled = true;
-      
-      // Simulate secure submission
-      setTimeout(() => {
-        // Success state
-        submitBtn.classList.remove('loading');
-        submitBtn.classList.add('success');
-        submitBtn.textContent = 'Message Sent!';
-        
-        // Log sanitized data (for debugging)
-        console.log('📨 Secure form submission:', formData);
-        
-        // Show success message
-        showSuccessMessage();
-        
-        // Reset form after delay
-        setTimeout(() => {
-          this.reset();
-          submitBtn.classList.remove('success');
-          submitBtn.textContent = 'Send Message';
-          submitBtn.disabled = false;
-          updateProgress();
-          updateCharCounter();
-        }, 3000);
-        
-      }, 2000);
-    });
-  }
-  
-  // Success/Error messaging
-  function showSuccessMessage() {
-    const container = document.querySelector('.form-container');
-    const existing = container.querySelector('.form-message');
-    if (existing) existing.remove();
-    
-    const message = document.createElement('div');
-    message.className = 'form-message success';
-    message.style.cssText = `
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
-      right: 1rem;
-      background: rgba(34, 197, 94, 0.1);
-      border: 1px solid rgba(34, 197, 94, 0.3);
-      color: #16A34A;
-      padding: 1rem;
-      border-radius: 12px;
-      text-align: center;
-      animation: fadeInUp 0.5s ease;
-      z-index: 1000;
-    `;
-    message.textContent = '✅ Message sent successfully! I\'ll get back to you within 24 hours.';
-    
-    container.style.position = 'relative';
-    container.appendChild(message);
-    
-    setTimeout(() => message.remove(), 5000);
-  }
-  
-  function showSubmissionError(errorMessage) {
-    const container = document.querySelector('.form-container');
-    const existing = container.querySelector('.form-message');
-    if (existing) existing.remove();
-    
-    const message = document.createElement('div');
-    message.className = 'form-message error';
-    message.style.cssText = `
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
-      right: 1rem;
-      background: rgba(239, 68, 68, 0.1);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      color: #DC2626;
-      padding: 1rem;
-      border-radius: 12px;
-      text-align: center;
-      animation: fadeInUp 0.5s ease;
-      z-index: 1000;
-    `;
-    message.textContent = '⚠️ ' + errorMessage;
-    
-    container.style.position = 'relative';
-    container.appendChild(message);
-    
-    setTimeout(() => message.remove(), 4000);
-  }
-  
-  // Initialize
-  updateProgress();
-  updateCharCounter();
-  
-  console.log('🛡️ Enhanced contact form with security initialized');
-}
-
-// Export the function
-export { initEnhancedContactForm };

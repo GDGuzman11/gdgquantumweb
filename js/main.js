@@ -1,8 +1,7 @@
-// Main initialization file for GDG Quantum Inc. website
-import { initCursor } from './cursor.js';
+// Main initialization file for GDG Quantum Inc. website - DEBUGGED VERSION
 import { initNeuralCanvas } from './neural-canvas.js';
 import { initNeuralFlow } from './neural-flow.js';
-import { initInteractions, initEnhancedContactForm } from './interactions.js';
+import { initInteractions} from './interactions.js';
 import { initScrollEffects, initFormHandling, logPerformance, initErrorHandling } from './utils.js';
 
 // 🔥 GLITCH ANIMATION FUNCTION
@@ -54,25 +53,49 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('🧠 Initializing GDG Quantum Inc. website...');
   
   try {
-    // Initialize core systems
-    initCursor();
+    // DEBUG: Check if functions are imported correctly
+    console.log('🔍 Function availability check:', {
+      initNeuralCanvas: typeof initNeuralCanvas,
+      initNeuralFlow: typeof initNeuralFlow,
+      initInteractions: typeof initInteractions,
+      initEnhancedContactForm: typeof initEnhancedContactForm,
+      initThemeToggle: typeof initThemeToggle,
+      initScrollEffects: typeof initScrollEffects,
+      initFormHandling: typeof initFormHandling,
+      initErrorHandling: typeof initErrorHandling
+    });
+    
+    // Initialize core systems with individual error handling
+    console.log('🎨 Initializing neural canvas...');
     initNeuralCanvas();
+    
+    console.log('🌊 Initializing neural flow...');
     initNeuralFlow();
+    
+    console.log('🎯 Initializing interactions...');
     initInteractions();
-    initEnhancedContactForm
+    
+    console.log('📜 Initializing scroll effects...');
     initScrollEffects();
+    
+    console.log('📋 Initializing form handling...');
     initFormHandling();
+    
+    console.log('🛡️ Initializing error handling...');
     initErrorHandling();
     
     // 🔥 Initialize the epic glitch animation
+    console.log('🔥 Initializing glitch animation...');
     initGlitchAnimation();
     
     // Performance monitoring
+    console.log('📊 Starting performance monitoring...');
     logPerformance();
     
-    console.log('✅ All systems online!');
+    console.log('✅ All systems online! Theme toggle ready! 💡');
   } catch (error) {
     console.error('🚨 Initialization error:', error);
+    console.error('🚨 Error stack:', error.stack);
   }
 });
 
@@ -80,5 +103,5 @@ document.addEventListener('DOMContentLoaded', () => {
 window.GDGQuantum = {
   version: '2.0.0',
   initialized: true,
-  glitchMode: 'ACTIVATED' // 🔥
+  glitchMode: 'ACTIVATED', // 🔥
 };

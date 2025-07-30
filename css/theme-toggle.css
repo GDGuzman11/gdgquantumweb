@@ -1,0 +1,45 @@
+/* ===== CLEAN THEME TOGGLE (COLORS ONLY) ===== */
+
+/* Light Bulb Hover Effects */
+.neural-lightbulb:hover .bulb-outline {
+  fill: rgba(100, 116, 139, 0.2);
+  stroke: #1F2937;
+}
+
+.neural-lightbulb:hover .neural-pattern {
+  opacity: 0.8;
+}
+
+/* ===== DARK THEME (COLORS ONLY) ===== */
+[data-theme="dark"] body {
+  background: #0F0F0F !important;
+  color: #E5E5E5 !important;
+}
+
+[data-theme="dark"] .hero-title {
+  color: #F9FAFB !important;
+}
+
+[data-theme="dark"] .hero-title .highlight {
+  color: #FFFFFF !important;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.6) !important;
+}
+
+[data-theme="dark"] .hero-description {
+  color: #9CA3AF !important;
+}
+
+[data-theme="dark"] .bulb-outline {
+  fill: rgba(255, 255, 255, 0.1) !important;
+  stroke: #FFFFFF !important;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+}
+
+[data-theme="dark"] .bulb-base {
+  stroke: #FFFFFF !important;
+}
+
+[data-theme="dark"] .neural-pattern {
+  stroke: #FFFFFF !important;
+  opacity: 0.8 !important;
+}

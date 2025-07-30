@@ -1,4 +1,4 @@
-// CSS animation system for neural flow
+// CSS animation system for neural flow - FIXED
 export function initNeuralFlow() {
   const flowContainer = document.getElementById('neuralFlow');
   if (!flowContainer) {
@@ -6,7 +6,10 @@ export function initNeuralFlow() {
     return;
   }
   
-  const containerRect = flowContainer.getBoundingClientRect();
+  // Get container dimensions
+  function getContainerRect() {
+    return flowContainer.getBoundingClientRect();
+  }
   
   // Code snippets for generation
   const codeSnippets = [
@@ -37,8 +40,9 @@ export function initNeuralFlow() {
     'tf.keras.Sequential(['
   ];
 
-  // Create warm data streams
+  // Create data streams - FIXED
   function createDataStream() {
+    const containerRect = getContainerRect();
     const stream = document.createElement('div');
     const variants = ['data-stream', 'data-stream warm-variant', 'data-stream golden-variant'];
     stream.className = variants[Math.floor(Math.random() * variants.length)];
@@ -57,8 +61,9 @@ export function initNeuralFlow() {
     }, 8000);
   }
 
-  // Create floating nodes
+  // Create floating nodes - FIXED
   function createFloatingNode() {
+    const containerRect = getContainerRect();
     const node = document.createElement('div');
     node.className = 'neural-node';
     node.style.left = Math.random() * containerRect.width + 'px';
@@ -75,8 +80,9 @@ export function initNeuralFlow() {
     }, 18000);
   }
 
-  // Create pulse waves with code generation
+  // Create pulse waves - FIXED
   function createPulseWave() {
+    const containerRect = getContainerRect();
     const wave = document.createElement('div');
     wave.className = 'pulse-wave';
     const size = Math.random() * 40 + 30;
@@ -102,8 +108,9 @@ export function initNeuralFlow() {
     }, 6000);
   }
 
-  // Create code generation
+  // Create code generation - FIXED
   function createCodeGeneration(centerX, centerY) {
+    const containerRect = getContainerRect();
     const codeCount = Math.random() * 4 + 3;
     
     for (let i = 0; i < codeCount; i++) {
@@ -136,8 +143,9 @@ export function initNeuralFlow() {
     }
   }
 
-  // Create flowing particles with warm touches
+  // Create flowing particles - FIXED
   function createFlowParticle() {
+    const containerRect = getContainerRect();
     const particle = document.createElement('div');
     particle.className = 'flow-particle';
     particle.style.left = Math.random() * containerRect.width + 'px';
@@ -145,8 +153,7 @@ export function initNeuralFlow() {
     
     // Add warm glow to some particles
     if (Math.random() > 0.7) {
-      particle.style.background = 'rgba(255, 140, 60, 0.3)';
-      particle.style.boxShadow = '0 0 6px rgba(255, 140, 60, 0.4)';
+      particle.classList.add('warm');
     }
     
     // Random movement
@@ -171,18 +178,31 @@ export function initNeuralFlow() {
     }, duration * 1000);
   }
 
-  // Initialize intervals with increased frequency
-  setInterval(createDataStream, 1500); // More frequent streams
-  setInterval(createFloatingNode, 5000);
-  setInterval(createPulseWave, 4000); // More frequent pulses
-  setInterval(createFlowParticle, 2000);
+  // Initialize intervals - FIXED AND ACTIVE
+  const streamInterval = setInterval(createDataStream, 1500);
+  const nodeInterval = setInterval(createFloatingNode, 5000);
+  const pulseInterval = setInterval(createPulseWave, 4000);
+  const particleInterval = setInterval(createFlowParticle, 2000);
   
-  // Create initial elements
-  for (let i = 0; i < 5; i++) {
+  // Create initial elements immediately
+  setTimeout(() => createDataStream(), 100);
+  setTimeout(() => createFloatingNode(), 500);
+  setTimeout(() => createPulseWave(), 1000);
+  setTimeout(() => createFlowParticle(), 1500);
+  
+  for (let i = 1; i < 5; i++) {
     setTimeout(createDataStream, i * 300);
     setTimeout(createFloatingNode, i * 1500);
     setTimeout(createPulseWave, i * 1000);
   }
   
-  console.log('🌊 Neural flow initialized');
+  // Clean up on page unload
+  window.addEventListener('beforeunload', () => {
+    clearInterval(streamInterval);
+    clearInterval(nodeInterval);
+    clearInterval(pulseInterval);
+    clearInterval(particleInterval);
+  });
+  
+  console.log('🌊 Neural flow initialized and actively running');
 }

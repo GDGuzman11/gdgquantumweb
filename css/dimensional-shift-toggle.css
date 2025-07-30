@@ -1,0 +1,394 @@
+/* ===== DIMENSIONAL SHIFT TOGGLE ===== */
+/* Multiple realities rotating through space-time */
+
+.dimensional-shift-container {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  pointer-events: auto;
+}
+
+/* Top-left positioning - Below neural indicator */
+.dimensional-shift-container.top-left-toggle {
+  position: fixed;
+  top: 4.5rem;
+  left: 2rem;
+  z-index: 1000;
+  background: rgba(249, 250, 251, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.dimensional-shift-container.top-left-toggle:hover {
+  background: var(--bg-secondary);
+  border-color: var(--border-hover);
+  box-shadow: 0 8px 30px var(--glow-color);
+}
+
+.dimensional-shift-toggle {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  perspective: 200px;
+  transform-style: preserve-3d;
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  overflow: visible;
+}
+
+.dimensional-shift-toggle:hover {
+  transform: scale(1.05);
+  border-color: var(--border-hover);
+  box-shadow: 0 8px 30px var(--glow-color);
+}
+
+/* ===== DIMENSIONAL PLANES ===== */
+/* Three geometric planes representing different realities */
+
+.dimension-plane {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 2px solid var(--neural-secondary);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-style: preserve-3d;
+  opacity: 0.7;
+}
+
+/* Plane 1: Primary Reality - Largest Square */
+.dimension-plane-1 {
+  width: 24px;
+  height: 24px;
+  transform: translate(-50%, -50%) rotateZ(0deg);
+  border-color: var(--neural-primary);
+  z-index: 3;
+}
+
+/* Plane 2: Alternate Reality - Rotated on X-axis */
+.dimension-plane-2 {
+  width: 16px;
+  height: 16px;
+  transform: translate(-50%, -50%) rotateX(45deg) rotateZ(0deg);
+  border-color: var(--neural-secondary);
+  z-index: 2;
+}
+
+/* Plane 3: Quantum Reality - Rotated on Y-axis */
+.dimension-plane-3 {
+  width: 10px;
+  height: 10px;
+  transform: translate(-50%, -50%) rotateY(45deg) rotateZ(0deg);
+  border-color: var(--neural-tertiary);
+  z-index: 1;
+}
+
+/* ===== INACTIVE STATE ===== */
+/* Subtle hover animations only */
+
+.dimensional-shift-toggle:not(.active) .dimension-plane-1 {
+  animation: none;
+}
+
+.dimensional-shift-toggle:not(.active) .dimension-plane-2 {
+  animation: none;
+}
+
+.dimensional-shift-toggle:not(.active) .dimension-plane-3 {
+  animation: none;
+}
+
+.dimensional-shift-toggle:not(.active):hover .dimension-plane-1 {
+  transform: translate(-50%, -50%) rotateZ(12deg);
+  opacity: 1;
+}
+
+.dimensional-shift-toggle:not(.active):hover .dimension-plane-2 {
+  transform: translate(-50%, -50%) rotateX(45deg) rotateZ(-8deg);
+  opacity: 0.9;
+}
+
+.dimensional-shift-toggle:not(.active):hover .dimension-plane-3 {
+  transform: translate(-50%, -50%) rotateY(45deg) rotateZ(4deg);
+  opacity: 0.8;
+}
+
+/* ===== ACTIVE STATE - DIMENSIONAL SHIFT ENGAGED ===== */
+/* Continuous rotation representing reality shifting */
+
+.dimensional-shift-toggle.active {
+  background: var(--bg-tertiary);
+  border-color: var(--neural-primary);
+  box-shadow: 
+    0 0 20px var(--glow-color),
+    0 0 40px var(--pulse-color),
+    0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.dimensional-shift-toggle.active .dimension-plane {
+  border-color: var(--neural-primary);
+  opacity: 1;
+  box-shadow: 0 0 10px var(--glow-color);
+}
+
+/* NEVER-ENDING ROTATIONS - Reality is constantly shifting */
+.dimensional-shift-toggle.active .dimension-plane-1 {
+  animation: dimension-shift-primary 3s linear infinite;
+}
+
+.dimensional-shift-toggle.active .dimension-plane-2 {
+  animation: dimension-shift-alternate 4s linear infinite reverse;
+}
+
+.dimensional-shift-toggle.active .dimension-plane-3 {
+  animation: dimension-shift-quantum 2.5s linear infinite;
+}
+
+/* ===== DIMENSIONAL SHIFT ANIMATIONS ===== */
+/* Each plane rotates at different speeds through space-time */
+
+@keyframes dimension-shift-primary {
+  0% {
+    transform: translate(-50%, -50%) rotateZ(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotateZ(360deg);
+  }
+}
+
+@keyframes dimension-shift-alternate {
+  0% {
+    transform: translate(-50%, -50%) rotateX(45deg) rotateZ(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotateX(45deg) rotateZ(360deg);
+  }
+}
+
+@keyframes dimension-shift-quantum {
+  0% {
+    transform: translate(-50%, -50%) rotateY(45deg) rotateZ(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotateY(45deg) rotateZ(360deg);
+  }
+}
+
+/* ===== REALITY PARTICLES ===== */
+/* Particles that emanate from the dimensional shift */
+
+.dimensional-shift-toggle.active::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: radial-gradient(
+    circle at center,
+    var(--glow-color) 0%,
+    transparent 60%
+  );
+  border-radius: 12px;
+  opacity: 0.6;
+  animation: reality-pulse 2s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+@keyframes reality-pulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+/* ===== DIMENSIONAL SHIFT LABEL ===== */
+/* Optional label for clarity */
+
+.dimensional-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+  pointer-events: none;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.dimensional-shift-container.top-left-toggle .dimensional-label {
+  opacity: 0.7;
+}
+
+.dimensional-shift-container.top-left-toggle:hover .dimensional-label {
+  opacity: 0.9;
+}
+
+.dimensional-shift-toggle.active + .dimensional-label {
+  color: var(--neural-primary);
+  opacity: 1;
+}
+
+/* ===== QUANTUM STABILIZATION EFFECT ===== */
+/* Visual feedback during theme transition */
+
+.dimensional-shift-toggle.transitioning {
+  pointer-events: none;
+}
+
+.dimensional-shift-toggle.transitioning .dimension-plane {
+  animation-play-state: paused;
+  opacity: 0.5;
+}
+
+.dimensional-shift-toggle.transitioning::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  transform: translate(-50%, -50%);
+  border: 3px solid transparent;
+  border-top-color: var(--neural-primary);
+  border-radius: 50%;
+  animation: quantum-stabilize 0.8s linear;
+}
+
+@keyframes quantum-stabilize {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) scale(1);
+    opacity: 0;
+  }
+}
+
+/* ===== ACCESSIBILITY ENHANCEMENTS ===== */
+/* Keyboard and screen reader support */
+
+.dimensional-shift-toggle[tabindex="0"]:focus {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 4px;
+}
+
+.dimensional-shift-toggle[aria-pressed="true"] {
+  /* Active state already handled above */
+}
+
+/* Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ===== MOBILE RESPONSIVENESS ===== */
+@media (max-width: 768px) {
+  .dimensional-shift-container.top-left-toggle {
+    top: 3.5rem;
+    left: 1rem;
+    padding: 0.6rem 0.8rem;
+    gap: 0.4rem;
+  }
+  
+  .dimensional-shift-toggle {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .dimension-plane-1 {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .dimension-plane-2 {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .dimension-plane-3 {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .dimensional-label {
+    font-size: 0.7rem;
+  }
+}
+
+/* ===== REDUCED MOTION SUPPORT ===== */
+@media (prefers-reduced-motion: reduce) {
+  .dimensional-shift-toggle.active .dimension-plane-1,
+  .dimensional-shift-toggle.active .dimension-plane-2,
+  .dimensional-shift-toggle.active .dimension-plane-3 {
+    animation: none;
+  }
+  
+  .dimensional-shift-toggle.active .dimension-plane {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  
+  .dimensional-shift-toggle.active::before {
+    animation: none;
+    opacity: 0.6;
+  }
+}
+
+/* ===== PERFORMANCE OPTIMIZATIONS ===== */
+/* GPU acceleration for smooth rotations */
+.dimension-plane {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.dimensional-shift-toggle.active .dimension-plane {
+  will-change: transform;
+}
+
+/* ===== INTEGRATION WITH NEURAL SYSTEM ===== */
+/* When active, enhance neural elements */
+[data-theme="dark"] .dimensional-shift-toggle.active {
+  box-shadow: 
+    0 0 30px rgba(255, 255, 255, 0.4),
+    0 0 50px rgba(255, 255, 255, 0.2),
+    0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .dimensional-shift-toggle.active .dimension-plane {
+  border-color: #FFFFFF;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+}
+
+[data-theme="dark"] .dimensional-shift-toggle.active::before {
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 60%
+  );
+}

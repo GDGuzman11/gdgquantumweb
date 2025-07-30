@@ -755,7 +755,7 @@ function initMobileNavigation() {
   const mobileNav = document.querySelector('.mobile-sticky-nav');
   const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
   
-  // Show/hide mobile nav based on screen size
+  // Show mobile nav on mobile screens
   function toggleMobileNav() {
     if (window.innerWidth <= 768) {
       if (mobileNav) {
@@ -781,22 +781,23 @@ function initMobileNavigation() {
       
       const targetCard = this.getAttribute('data-target');
       if (targetCard) {
-        // Find current active card
+        // Use the existing card transition system
         const currentCard = document.querySelector('.content-card.active');
         const targetCardElement = document.getElementById(targetCard);
         
-        if (currentCard && targetCardElement) {
-          // Simple fade transition for mobile
+        if (currentCard && targetCardElement && currentCard.id !== targetCard) {
+          // Hide current card
           currentCard.classList.remove('active');
           currentCard.style.opacity = '0';
+          currentCard.style.visibility = 'hidden';
           
+          // Show target card
           setTimeout(() => {
-            currentCard.style.visibility = 'hidden';
             targetCardElement.style.visibility = 'visible';
             targetCardElement.style.opacity = '1';
             targetCardElement.classList.add('active');
             
-            // Scroll to top of new content
+            // Scroll to top
             window.scrollTo(0, 0);
           }, 300);
         }

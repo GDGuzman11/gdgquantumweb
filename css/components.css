@@ -1763,13 +1763,13 @@
     border-color: rgba(100, 116, 139, 0.4);
   }
   
+  /* Hide the neural border card on mobile when using sticky nav */
+  .neural-border-card {
+    display: none !important;
+  }
+
   /* Add top padding to content to account for sticky nav */
   .content-stage {
     padding-top: 80px;
-  }
-  
-  /* Hide the neural border card on mobile when using sticky nav */
-  .neural-border-card {
-    display: none;
   }
 }

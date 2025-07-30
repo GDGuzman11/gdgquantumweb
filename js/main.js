@@ -3,6 +3,7 @@ import { initNeuralCanvas } from './neural-canvas.js';
 import { initNeuralFlow } from './neural-flow.js';
 import { initInteractions} from './interactions.js';
 import { initScrollEffects, initFormHandling, logPerformance, initErrorHandling } from './utils.js';
+import { initDimensionalShift } from './dimensional-shift.js';
 
 // 🔥 GLITCH ANIMATION FUNCTION
 function initGlitchAnimation() {
@@ -65,6 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
       initErrorHandling: typeof initErrorHandling
     });
     
+    console.log('🌀 Initializing dimensional shift...');
+    initDimensionalShift();
     // Initialize core systems with individual error handling
     console.log('🎨 Initializing neural canvas...');
     initNeuralCanvas();

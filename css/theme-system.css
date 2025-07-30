@@ -1,0 +1,332 @@
+/* ===== THEME SYSTEM FOUNDATION ===== */
+/* CSS Custom Properties for Light/Dark Theme System */
+
+:root {
+  /* ===== LIGHT THEME (DEFAULT) ===== */
+  --bg-primary: #fefefe;
+  --bg-secondary: rgba(249, 250, 251, 0.95);
+  --bg-tertiary: rgba(255, 255, 255, 0.9);
+  --bg-card: rgba(255, 255, 255, 0.95);
+  --bg-form: rgba(255, 255, 255, 0.95);
+  
+  /* Text Colors */
+  --text-primary: #1a1a1a;
+  --text-secondary: #4B5563;
+  --text-tertiary: #6B7280;
+  --text-muted: #9CA3AF;
+  --text-highlight: #1a1a1a;
+  --text-hero-title: #1F2937;
+  --text-hero-highlight: #1a1a1a;
+  
+  /* Neural Colors */
+  --neural-primary: rgba(100, 116, 139, 0.8);
+  --neural-secondary: rgba(100, 116, 139, 0.6);
+  --neural-tertiary: rgba(100, 116, 139, 0.4);
+  --neural-accent: rgba(100, 116, 139, 0.3);
+  --neural-glow: rgba(100, 116, 139, 0.6);
+  
+  /* Border Colors */
+  --border-primary: rgba(229, 231, 235, 0.8);
+  --border-secondary: rgba(229, 231, 235, 0.6);
+  --border-accent: rgba(100, 116, 139, 0.3);
+  --border-hover: rgba(100, 116, 139, 0.4);
+  
+  /* Frame Colors */
+  --frame-border: rgba(26, 26, 26, 0.15);
+  --frame-corner: rgba(26, 26, 26, 0.2);
+  --frame-corner-hover: rgba(26, 26, 26, 0.4);
+  
+  /* Interactive States */
+  --hover-bg: rgba(100, 116, 139, 0.05);
+  --hover-border: rgba(100, 116, 139, 0.4);
+  --focus-ring: rgba(100, 116, 139, 0.5);
+  
+  /* Special Effects */
+  --glow-color: rgba(100, 116, 139, 0.3);
+  --shimmer-color: rgba(100, 116, 139, 0.6);
+  --pulse-color: rgba(100, 116, 139, 0.4);
+  
+  /* Company Name Highlight */
+  --company-glow: transparent;
+  --company-text-shadow: none;
+}
+
+/* ===== DARK THEME ===== */
+[data-theme="dark"] {
+  /* Background Colors */
+  --bg-primary: #0F0F0F;
+  --bg-secondary: rgba(15, 15, 15, 0.95);
+  --bg-tertiary: rgba(20, 20, 20, 0.9);
+  --bg-card: rgba(20, 20, 20, 0.95);
+  --bg-form: rgba(25, 25, 25, 0.95);
+  
+  /* Text Colors */
+  --text-primary: #E5E5E5;
+  --text-secondary: #B3B3B3;
+  --text-tertiary: #9CA3AF;
+  --text-muted: #6B7280;
+  --text-highlight: #FFFFFF;
+  --text-hero-title: #F9FAFB;
+  --text-hero-highlight: #FFFFFF;
+  
+  /* Neural Colors - Enhanced for Dark */
+  --neural-primary: rgba(255, 255, 255, 0.8);
+  --neural-secondary: rgba(255, 255, 255, 0.6);
+  --neural-tertiary: rgba(255, 255, 255, 0.4);
+  --neural-accent: rgba(255, 255, 255, 0.3);
+  --neural-glow: rgba(255, 255, 255, 0.6);
+  
+  /* Border Colors */
+  --border-primary: rgba(255, 255, 255, 0.15);
+  --border-secondary: rgba(255, 255, 255, 0.1);
+  --border-accent: rgba(255, 255, 255, 0.3);
+  --border-hover: rgba(255, 255, 255, 0.4);
+  
+  /* Frame Colors */
+  --frame-border: rgba(255, 255, 255, 0.2);
+  --frame-corner: rgba(255, 255, 255, 0.3);
+  --frame-corner-hover: rgba(255, 255, 255, 0.5);
+  
+  /* Interactive States */
+  --hover-bg: rgba(255, 255, 255, 0.05);
+  --hover-border: rgba(255, 255, 255, 0.4);
+  --focus-ring: rgba(255, 255, 255, 0.5);
+  
+  /* Special Effects - WHITE GLOW SYSTEM */
+  --glow-color: rgba(255, 255, 255, 0.6);
+  --shimmer-color: rgba(255, 255, 255, 0.8);
+  --pulse-color: rgba(255, 255, 255, 0.6);
+  
+  /* Company Name Highlight - EPIC GLOW */
+  --company-glow: rgba(255, 255, 255, 0.8);
+  --company-text-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 40px rgba(255, 255, 255, 0.4);
+}
+
+/* ===== THEME TRANSITION SYSTEM ===== */
+/* Smooth transitions for all theme-aware elements */
+:root {
+  --theme-transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Apply transitions to key elements */
+body,
+.website-frame,
+.frame-corner,
+.content-card,
+.neural-border-card,
+.hero-title,
+.hero-title .highlight,
+.neural-nav a,
+.contact-form,
+.tool-card,
+.card-front,
+.card-back {
+  transition: var(--theme-transition);
+}
+
+/* ===== ADAPTIVE COLOR APPLICATION ===== */
+/* These will automatically adapt when theme changes */
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Hero Title Enhanced */
+.hero-title {
+  color: var(--text-hero-title);
+}
+
+.hero-title .highlight {
+  color: var(--text-hero-highlight);
+  text-shadow: var(--company-text-shadow);
+  /* Add subtle glow effect for company name */
+  position: relative;
+}
+
+.hero-title .highlight::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--company-glow);
+  border-radius: 8px;
+  filter: blur(10px);
+  opacity: 0.3;
+  z-index: -1;
+  transition: var(--theme-transition);
+}
+
+/* Text Hierarchy */
+.hero-description {
+  color: var(--text-secondary);
+}
+
+.hero-intro {
+  color: var(--text-tertiary);
+}
+
+/* Neural System Colors */
+.neural-dot {
+  background: var(--neural-primary);
+}
+
+.falling-node {
+  background: var(--neural-secondary);
+  box-shadow: 0 0 8px var(--neural-glow);
+}
+
+.border-segment {
+  background: var(--neural-primary);
+  box-shadow: 0 0 4px var(--neural-glow);
+}
+
+.connection-pulse {
+  background: var(--neural-primary);
+  box-shadow: 0 0 12px var(--neural-glow);
+}
+
+/* Card System */
+.neural-border-card,
+.contact-form,
+.card-front,
+.card-back {
+  background: var(--bg-card);
+  border-color: var(--border-primary);
+}
+
+.neural-nav a {
+  color: var(--text-primary);
+  border-color: var(--border-secondary);
+}
+
+.neural-nav a:hover {
+  background: var(--hover-bg);
+  border-color: var(--hover-border);
+  color: var(--text-primary);
+}
+
+/* Frame System */
+.website-frame {
+  border-color: var(--frame-border);
+}
+
+.frame-corner {
+  background: var(--frame-corner);
+}
+
+body:hover .frame-corner {
+  background: var(--frame-corner-hover);
+}
+
+/* Form Elements */
+.form-group input,
+.form-group textarea {
+  color: var(--text-primary);
+  border-bottom-color: var(--border-secondary);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-bottom-color: var(--neural-primary);
+  box-shadow: 0 3px 15px var(--glow-color);
+}
+
+.form-group label {
+  color: var(--text-tertiary);
+}
+
+.submit-btn {
+  color: var(--neural-primary);
+  border-color: var(--neural-secondary);
+}
+
+.submit-btn:hover {
+  background: var(--neural-primary);
+  color: var(--bg-primary);
+  border-color: var(--neural-primary);
+  box-shadow: 0 10px 30px var(--glow-color);
+}
+
+/* Tool Cards */
+.tool-name {
+  color: var(--text-primary);
+}
+
+.tool-preview,
+.tool-description {
+  color: var(--text-secondary);
+}
+
+.tool-features li {
+  color: var(--text-tertiary);
+}
+
+/* Enhanced Contact Cards */
+.contact-card {
+  background: var(--bg-card);
+  border-color: var(--border-primary);
+}
+
+.contact-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 20px 40px var(--glow-color), 0 8px 20px var(--pulse-color);
+}
+
+/* Back Button */
+.back-btn {
+  background: var(--bg-secondary);
+  border-color: var(--border-primary);
+  color: var(--text-secondary);
+}
+
+.back-btn:hover {
+  background: var(--hover-bg);
+  border-color: var(--hover-border);
+  color: var(--text-primary);
+}
+
+.content-title {
+  background: var(--bg-secondary);
+  border-color: var(--border-primary);
+  color: var(--text-secondary);
+}
+
+/* ===== PERFORMANCE OPTIMIZATIONS ===== */
+/* Ensure smooth theme transitions */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* GPU acceleration for theme transitions */
+.hero-title .highlight,
+.neural-border-card,
+.content-card {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* ===== ACCESSIBILITY ===== */
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --theme-transition: none;
+  }
+  
+  body,
+  .hero-title .highlight::after {
+    transition: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  [data-theme="dark"] {
+    --text-primary: #FFFFFF;
+    --text-secondary: #E5E5E5;
+    --border-primary: rgba(255, 255, 255, 0.3);
+  }
+}

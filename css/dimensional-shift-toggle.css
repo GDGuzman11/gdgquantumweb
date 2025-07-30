@@ -14,19 +14,19 @@
   top: 4.5rem;
   left: 2rem;
   z-index: 1000;
-  background: rgba(249, 250, 251, 0.95);
-  backdrop-filter: blur(20px);
-  border: 1px solid var(--border-primary);
-  border-radius: 12px;
-  padding: 0.8rem 1rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  /* Remove all background, border, padding, and box-shadow */
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  backdrop-filter: none;
   transition: all 0.3s ease;
 }
 
 .dimensional-shift-container.top-left-toggle:hover {
-  background: var(--bg-secondary);
-  border-color: var(--border-hover);
-  box-shadow: 0 8px 30px var(--glow-color);
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 .dimensional-shift-toggle {
@@ -306,28 +306,49 @@
   border: 0;
 }
 
-/* ===== MOBILE RESPONSIVENESS ===== */
-@media (max-width: 768px) {
+/* ===== RESPONSIVE POSITIONING ===== */
+
+/* Desktop positioning - left of hero title */
+/* Desktop positioning - left of hero title */
+@media (min-width: 769px) {
   .dimensional-shift-container.top-left-toggle {
-    top: 3.5rem;
-    left: 1rem;
-    padding: 0.6rem 0.8rem;
-    gap: 0.4rem;
+    position: fixed;
+    top: 50vh; /* Center vertically in viewport */
+    left: 2rem; /* Keep some margin from left edge */
+    transform: translateY(-50%);
+    z-index: 1000;
   }
   
+  .dimensional-label {
+    display: block;
+  }
+}
+
+/* Mobile positioning - inside mobile nav */
+@media (max-width: 768px) {
+  .dimensional-shift-container.top-left-toggle {
+    position: fixed;
+    top: 1rem; /* Align with mobile nav */
+    right: 1rem; /* Position on the right side of mobile nav */
+    left: auto; /* Reset left positioning */
+    transform: none; /* Reset transform */
+    z-index: 250; /* Above mobile nav (200) */
+  }
+  
+  /* Make it smaller on mobile */
   .dimensional-shift-toggle {
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
   }
   
   .dimension-plane-1 {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
   }
   
   .dimension-plane-2 {
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
   }
   
   .dimension-plane-3 {
@@ -335,8 +356,9 @@
     height: 8px;
   }
   
+  /* Hide the label on mobile to save space */
   .dimensional-label {
-    font-size: 0.7rem;
+    display: none;
   }
 }
 

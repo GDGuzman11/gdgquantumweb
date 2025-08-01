@@ -65,7 +65,7 @@ export function initNeuralFlow() {
   function createFloatingNode() {
     const containerRect = getContainerRect();
     const node = document.createElement('div');
-    node.className = 'neural-node';
+    node.className = 'neural-node float-node';
     node.style.left = Math.random() * containerRect.width + 'px';
     node.style.top = Math.random() * containerRect.height + 'px';
     node.style.animationDelay = Math.random() * 12 + 's';
@@ -185,7 +185,7 @@ export function initNeuralFlow() {
   const particleInterval = setInterval(createFlowParticle, 2000);
   
   // Create initial elements immediately
-  setTimeout(() => createDataStream(), 100);
+  // setTimeout(() => createDataStream(), 100);
   setTimeout(() => createFloatingNode(), 500);
   setTimeout(() => createPulseWave(), 1000);
   setTimeout(() => createFlowParticle(), 1500);

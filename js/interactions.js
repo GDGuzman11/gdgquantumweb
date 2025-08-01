@@ -23,7 +23,7 @@ export function initInteractions() {
   console.log('🎯 Dynamic card system initialized');
 }
 
-// Card navigation system
+// Card navigation system - FIXED VERSION
 function initCardNavigation() {
   const navLinks = document.querySelectorAll('.neural-nav a');
   const backButtons = document.querySelectorAll('.back-btn');
@@ -58,9 +58,11 @@ function initCardNavigation() {
     });
   });
   
-  // Card transition function
+  // FIXED: Card transition function
   function transitionToCard(targetCardId, direction = 'fade') {
     if (isTransitioning) return;
+    
+    console.log(`🔄 Transitioning from ${currentCard} to ${targetCardId}`);
     
     isTransitioning = true;
     
@@ -68,6 +70,7 @@ function initCardNavigation() {
     const targetCardElement = document.getElementById(targetCardId);
     
     if (!currentCardElement || !targetCardElement) {
+      console.error(`❌ Card not found: current=${currentCard}, target=${targetCardId}`);
       isTransitioning = false;
       return;
     }
@@ -82,8 +85,13 @@ function initCardNavigation() {
     // Create transition overlay for visual feedback
     createTransitionEffect(targetCardId);
     
-    // Set up target card initial state
-    targetCardElement.style.transform = 'translateX(0)';
+    // FIXED: Properly set up target card for transition
+    targetCardElement.style.position = 'absolute';
+    targetCardElement.style.top = '0';
+    targetCardElement.style.left = '0';
+    targetCardElement.style.width = '100%';
+    targetCardElement.style.minHeight = '100vh';
+    targetCardElement.style.transform = 'translateX(0) scale(1)';
     targetCardElement.style.opacity = '0';
     targetCardElement.style.visibility = 'visible';
     targetCardElement.style.zIndex = '25';
@@ -99,6 +107,8 @@ function initCardNavigation() {
         // Fade in target card
         targetCardElement.style.opacity = '1';
         targetCardElement.style.transform = 'translateX(0) scale(1)';
+        
+        console.log(`✅ Target card ${targetCardId} should now be visible`);
       }, 200);
     });
     
@@ -110,9 +120,15 @@ function initCardNavigation() {
       currentCardElement.style.zIndex = '10';
       currentCardElement.style.transform = 'translateX(0) scale(1)';
       
-      // Activate target card
+      // FIXED: Properly activate target card
       targetCardElement.classList.add('active');
       targetCardElement.style.zIndex = '20';
+      targetCardElement.style.position = 'absolute';
+      targetCardElement.style.top = '0';
+      targetCardElement.style.left = '0';
+      targetCardElement.style.width = '100%';
+      targetCardElement.style.minHeight = '100vh';
+      targetCardElement.style.overflowY = 'auto';
       
       // Update current card reference
       currentCard = targetCardId;
@@ -129,11 +145,11 @@ function initCardNavigation() {
       // Trigger card-specific animations
       triggerCardAnimations(targetCardId);
       
-      console.log(`🌟 Faded to: ${targetCardId}`);
+      console.log(`🌟 Successfully transitioned to: ${targetCardId}`);
     }, 800);
   }
-  
-  // Create visual transition effect
+
+  // Rest of the functions remain the same...
   function createTransitionEffect(targetCardId) {
     const effect = document.createElement('div');
     effect.className = 'transition-effect';
@@ -212,7 +228,24 @@ function initCardNavigation() {
     }
   }
   
-  // Card-specific animations
+  // FIXED: Project items animation
+  function animateProjectItems(card) {
+    const items = card.querySelectorAll('.project-item');
+    console.log(`🎬 Animating ${items.length} project items`);
+    
+    items.forEach((item, index) => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateX(30px)';
+      
+      setTimeout(() => {
+        item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        item.style.opacity = '1';
+        item.style.transform = 'translateX(0)';
+      }, 300 + (index * 100));
+    });
+  }
+
+  // Other animation functions remain the same...
   function animateStoryElements(card) {
     const sections = card.querySelectorAll('.story-section');
     sections.forEach((section, index) => {
@@ -224,20 +257,6 @@ function initCardNavigation() {
         section.style.opacity = '1';
         section.style.transform = 'translateY(0)';
       }, 200 + (index * 150));
-    });
-  }
-  
-  function animateProjectItems(card) {
-    const items = card.querySelectorAll('.project-item');
-    items.forEach((item, index) => {
-      item.style.opacity = '0';
-      item.style.transform = 'translateX(30px)';
-      
-      setTimeout(() => {
-        item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        item.style.opacity = '1';
-        item.style.transform = 'translateX(0)';
-      }, 300 + (index * 100));
     });
   }
   

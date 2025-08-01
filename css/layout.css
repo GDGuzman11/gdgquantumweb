@@ -5,7 +5,7 @@
   left: 1rem;
   right: 1rem;
   bottom: 1rem;
-  border: 1px solid rgba(26, 26, 26, 0.15);
+  border: 1px solid rgba(26, 26, 26, 0.15); /* RESTORED BORDER */
   pointer-events: none;
   z-index: 9998;
   transition: border-color 0.3s ease;
@@ -82,7 +82,7 @@
 
 /* Hover effect on frame */
 body:hover .website-frame {
-  border-color: rgba(26, 26, 26, 0.25);
+  border-color: rgba(26, 26, 26, 0.25); /* RESTORED HOVER EFFECT */
 }
 
 body:hover .frame-corner {
@@ -211,22 +211,30 @@ body:hover .frame-corner {
   flex-wrap: wrap;
 }
 
-/* Footer */
+/* Footer - FIXED: Stick to bottom of viewport with padding inside frame */
 .footer {
-  padding: 4rem 0 2rem;
-  border-top: 1px solid rgba(26, 26, 26, 0.1);
+  position: fixed;
+  bottom: 1.5rem; /* Added 0.5rem padding from bottom frame */
+  left: 1rem;
+  right: 1rem;
+  padding: 0.5rem 0;
+  border-top: none;
   text-align: center;
+  background: transparent; /* No background needed */
+  z-index: 200; /* Above all content */
 }
 
 .footer p {
   font-size: 0.8rem;
   opacity: 0.4;
+  margin: 0; /* Ensure no extra margins */
 }
 
 /* Mobile responsive */
 @media (max-width: 768px) {
   body { 
-    margin: 0.5rem; 
+    margin: 0.5rem;
+    overflow: hidden; /* Prevent body scroll */
   }
   
   .website-frame {
@@ -276,6 +284,18 @@ body:hover .frame-corner {
   
   .frame-corner::after {
     display: none;
+  }
+  
+  /* Footer mobile - Stick to bottom with padding inside frame */
+  .footer {
+    position: fixed;
+    bottom: 1rem; /* Added 0.5rem padding from bottom frame */
+    left: 0.5rem;
+    right: 0.5rem;
+    padding: 0.4rem 0;
+    border-top: none;
+    background: transparent;
+    z-index: 200; /* Above mobile nav */
   }
 }
 

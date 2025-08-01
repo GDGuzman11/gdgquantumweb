@@ -4,6 +4,7 @@ import { initNeuralFlow } from './neural-flow.js';
 import { initInteractions} from './interactions.js';
 import { initScrollEffects, initFormHandling, logPerformance, initErrorHandling } from './utils.js';
 import { initDimensionalShift } from './dimensional-shift.js';
+import { initModal } from './modal.js';
 
 // 🔥 GLITCH ANIMATION FUNCTION
 function initGlitchAnimation() {
@@ -91,6 +92,10 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('🔥 Initializing glitch animation...');
     initGlitchAnimation();
     
+    // 🎭 Initialize modal system
+    console.log('🎭 Initializing modal system...');
+    initModal();
+
     // Performance monitoring
     console.log('📊 Starting performance monitoring...');
     logPerformance();

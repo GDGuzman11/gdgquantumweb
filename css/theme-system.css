@@ -120,7 +120,9 @@ body,
 .contact-form,
 .tool-card,
 .card-front,
-.card-back {
+.card-back,
+.node-number,
+.node-title {
   transition: var(--theme-transition);
 }
 
@@ -142,6 +144,28 @@ body {
   text-shadow: var(--company-text-shadow);
   /* Add subtle glow effect for company name */
   position: relative;
+}
+
+/* Enhanced About page highlight for dark theme */
+.about-title .highlight {
+  transition: var(--theme-transition);
+  position: relative;
+}
+
+[data-theme="dark"] .about-title .highlight {
+  color: #FFFFFF;
+  text-shadow: var(--company-text-shadow);
+  animation: company-glow-pulse 2s ease-in-out infinite alternate;
+}
+
+/* Fallback for any other highlight elements */
+[data-theme="dark"] .highlight {
+  color: #FFFFFF;
+  text-shadow: 
+    0 0 20px rgba(255, 255, 255, 0.6),
+    0 0 40px rgba(255, 255, 255, 0.4),
+    0 0 60px rgba(255, 255, 255, 0.2);
+  animation: company-glow-pulse 2s ease-in-out infinite alternate;
 }
 
 .hero-title .highlight::after {
@@ -294,6 +318,38 @@ body:hover .frame-corner {
   color: var(--text-secondary);
 }
 
+/* ===== NODE NUMBER ILLUMINATION FOR DARK THEME ===== */
+/* Make node numbers glow like "understanding the problem" */
+
+.node-number {
+  color: var(--neural-primary);
+  transition: var(--theme-transition);
+}
+
+.node-title {
+  color: var(--text-primary);
+  transition: var(--theme-transition);
+}
+
+/* Dark theme illumination for node numbers AND titles */
+[data-theme="dark"] .node-number {
+  color: #000000 !important; /* BLACK numbers with white glow */
+  text-shadow: 
+    0 0 20px rgba(255, 255, 255, 0.6),
+    0 0 40px rgba(255, 255, 255, 0.4),
+    0 0 60px rgba(255, 255, 255, 0.2);
+  animation: company-glow-pulse 2s ease-in-out infinite alternate;
+}
+
+[data-theme="dark"] .node-title {
+  color: #FFFFFF !important;
+  text-shadow: 
+    0 0 20px rgba(255, 255, 255, 0.6),
+    0 0 40px rgba(255, 255, 255, 0.4),
+    0 0 60px rgba(255, 255, 255, 0.2);
+  animation: company-glow-pulse 2s ease-in-out infinite alternate;
+}
+
 /* ===== PERFORMANCE OPTIMIZATIONS ===== */
 /* Ensure smooth theme transitions */
 * {
@@ -304,7 +360,8 @@ body:hover .frame-corner {
 /* GPU acceleration for theme transitions */
 .hero-title .highlight,
 .neural-border-card,
-.content-card {
+.content-card,
+.node-number {
   transform: translateZ(0);
   backface-visibility: hidden;
 }
@@ -317,7 +374,8 @@ body:hover .frame-corner {
   }
   
   body,
-  .hero-title .highlight::after {
+  .hero-title .highlight::after,
+  .node-number {
     transition: none;
   }
 }
@@ -329,4 +387,29 @@ body:hover .frame-corner {
     --text-secondary: #E5E5E5;
     --border-primary: rgba(255, 255, 255, 0.3);
   }
+}
+
+/* ===== MODAL DARK THEME FIX ===== */
+[data-theme="dark"] .modal-content {
+  background: rgba(15, 15, 15, 0.98) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: #E5E5E5 !important;
+}
+
+[data-theme="dark"] .modal-text {
+  color: #B3B3B3 !important;
+}
+
+[data-theme="dark"] .modal-title {
+  color: #F9FAFB !important;
+}
+
+[data-theme="dark"] .modal-number {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+[data-theme="dark"] .close-hint {
+  color: #9CA3AF !important;
 }

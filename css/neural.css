@@ -107,7 +107,7 @@
 }
 
 /* Floating Nodes */
-.neural-node {
+.neural-node.float-node {
   position: absolute;
   width: 4px;
   height: 4px;
@@ -396,4 +396,6 @@
   .automation-station::before {
     display: none;
   }
+
+  
 }

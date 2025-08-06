@@ -1,0 +1,750 @@
+/**
+ * 🎨 GDG Quantum - 3D Architecture Styles
+ * Core styling system with CSS custom properties
+ */
+
+/* CSS Custom Properties - Theme System */
+:root {
+    --bg-primary: #0f1419;
+    --bg-secondary: rgba(0, 0, 0, 0.8);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    
+    --neural-primary: #00d4ff;
+    --neural-secondary: #00ff88;
+    --neural-accent: #ff8c3c;
+    --neural-warning: #ff64c8;
+    --neural-success: #c8ff64;
+    
+    --glow-color: rgba(0, 212, 255, 0.5);
+    --border-primary: rgba(0, 212, 255, 0.5);
+    --border-secondary: #333;
+    
+    --hover-bg: rgba(0, 212, 255, 0.1);
+    --focus-ring: rgba(0, 212, 255, 0.8);
+    
+    --font-primary: 'Courier New', monospace;
+    --font-size-xs: 9px;
+    --font-size-sm: 10px;
+    --font-size-base: 11px;
+    --font-size-md: 12px;
+    --font-size-lg: 14px;
+    --font-size-xl: 16px;
+    --font-size-2xl: 18px;
+    
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 12px;
+    --spacing-lg: 20px;
+    --spacing-xl: 40px;
+    
+    --border-radius-sm: 4px;
+    --border-radius-md: 6px;
+    --border-radius-lg: 12px;
+    --border-radius-xl: 15px;
+    --border-radius-full: 50%;
+    
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    --shadow-glow: 0 0 10px var(--glow-color);
+    --shadow-glow-lg: 0 0 20px var(--glow-color);
+    --shadow-glow-xl: 0 0 30px var(--glow-color);
+    
+    --blur-sm: blur(5px);
+    --blur-md: blur(10px);
+    --blur-lg: blur(15px);
+    
+    --perspective: 2000px;
+    --animation-duration-base: 3s;
+    --animation-duration-slow: 4s;
+    --animation-duration-rotation: 20s;
+}
+
+/* Base Reset and Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    background: var(--bg-primary);
+    color: var(--neural-primary);
+    font-family: var(--font-primary);
+    overflow: hidden;
+    height: 100vh;
+    perspective: var(--perspective);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+}
+
+/* Blueprint Workspace Foundation */
+.blueprint-workspace {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: 
+        radial-gradient(circle at 25% 25%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(0, 255, 136, 0.1) 0%, transparent 50%);
+    perspective: var(--perspective);
+}
+
+/* Grid System */
+.blueprint-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(var(--border-primary) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border-primary) 1px, transparent 1px);
+    background-size: var(--spacing-xl) var(--spacing-xl);
+    opacity: 0.3;
+    animation: gridPulse var(--animation-duration-slow) ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Building Container */
+.building-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-style: preserve-3d;
+    animation: buildingRotate var(--animation-duration-rotation) linear infinite;
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+/* Building Floors */
+.building-floor {
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    border: 2px solid var(--border-primary);
+    border-radius: var(--border-radius-lg);
+    backdrop-filter: var(--blur-md);
+    transform-style: preserve-3d;
+    opacity: 0;
+    animation: floorConstruct var(--animation-duration-base) ease-in-out forwards;
+    transition: all var(--transition-base);
+    cursor: pointer;
+    will-change: transform, opacity;
+}
+
+.building-floor:hover {
+    filter: brightness(1.2);
+}
+
+.building-floor:focus {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: var(--spacing-xs);
+}
+
+/* Floor Content */
+.floor-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.floor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.floor-title {
+    font-size: var(--font-size-xl);
+    font-weight: bold;
+    text-shadow: var(--shadow-glow);
+}
+
+.floor-badge {
+    background: var(--bg-secondary);
+    border: 1px solid currentColor;
+    border-radius: var(--border-radius-xl);
+    padding: var(--spacing-xs) var(--spacing-md);
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Floor Specifications */
+.floor-specs {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.spec-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-size-base);
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--border-secondary);
+}
+
+.spec-label {
+    color: var(--text-secondary);
+}
+
+.spec-value {
+    color: currentColor;
+    font-weight: bold;
+}
+
+/* Connection Lines */
+.connection-line {
+    position: absolute;
+    width: 2px;
+    height: 60px;
+    background: linear-gradient(to bottom, currentColor, transparent);
+    left: 50%;
+    bottom: -60px;
+    transform: translateX(-50%);
+    animation: connectionFlow 2s ease-in-out infinite;
+}
+
+.data-flow {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: currentColor;
+    border-radius: var(--border-radius-full);
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    animation: dataFlowAnimation var(--animation-duration-base) linear infinite;
+    box-shadow: var(--shadow-glow);
+}
+
+/* Blueprint Panel */
+.blueprint-panel {
+    position: absolute;
+    top: var(--spacing-lg);
+    left: var(--spacing-lg);
+    width: 300px;
+    background: var(--bg-secondary);
+    border: 2px solid var(--neural-primary);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    backdrop-filter: var(--blur-lg);
+    z-index: 10;
+    font-family: var(--font-primary);
+}
+
+.panel-title {
+    font-size: var(--font-size-lg);
+    color: var(--neural-primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+    border-bottom: 1px solid var(--border-secondary);
+    padding-bottom: var(--spacing-md);
+}
+
+/* Project Information */
+.project-info {
+    margin-bottom: var(--spacing-lg);
+}
+
+.project-name {
+    font-size: var(--font-size-2xl);
+    color: var(--neural-secondary);
+    margin-bottom: var(--spacing-sm);
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+.project-classification {
+    font-size: var(--font-size-base);
+    color: #66ddff;
+    background: rgba(0, 212, 255, 0.1);
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--border-radius-xl);
+    display: inline-block;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+/* Progress Tracking */
+.construction-progress {
+    margin-bottom: var(--spacing-lg);
+}
+
+.progress-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-base);
+}
+
+.progress-bar {
+    width: 120px;
+    height: 6px;
+    background: #1a1a1a;
+    border-radius: 3px;
+    overflow: hidden;
+    border: 1px solid var(--border-secondary);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--neural-secondary), var(--neural-primary));
+    border-radius: 3px;
+    transition: width 2s ease;
+    animation: progressPulse var(--animation-duration-base) ease-in-out infinite;
+}
+
+/* Building Statistics */
+.building-stats {
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+    color: #888;
+}
+
+.stat-highlight {
+    color: var(--neural-primary);
+    font-weight: bold;
+}
+
+/* Camera Controls */
+.camera-controls {
+    position: absolute;
+    bottom: var(--spacing-lg);
+    right: var(--spacing-lg);
+    display: flex;
+    gap: var(--spacing-md);
+    z-index: 10;
+}
+
+.control-btn {
+    width: 40px;
+    height: 40px;
+    background: var(--bg-secondary);
+    border: 2px solid var(--neural-primary);
+    border-radius: var(--border-radius-full);
+    color: var(--neural-primary);
+    font-size: var(--font-size-xl);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: var(--blur-md);
+    outline: none;
+    user-select: none;
+}
+
+.control-btn:hover {
+    background: var(--hover-bg);
+    box-shadow: var(--shadow-glow-lg);
+    transform: scale(1.1);
+}
+
+.control-btn:focus {
+    box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+.control-btn:active {
+    transform: scale(0.95);
+}
+
+/* Particle System */
+.construction-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.particle {
+    position: absolute;
+    border-radius: var(--border-radius-full);
+    animation: particleFloat 4s linear infinite;
+    will-change: transform, opacity;
+}
+
+/* Blueprint Overlay */
+.blueprint-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 212, 255, 0.1) 2px, rgba(0, 212, 255, 0.1) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0, 212, 255, 0.1) 2px, rgba(0, 212, 255, 0.1) 4px);
+    opacity: 0;
+    transition: opacity var(--transition-slow);
+    pointer-events: none;
+}
+
+.blueprint-mode .blueprint-overlay {
+    opacity: 0.6;
+}
+
+/* Technical Annotations */
+.technical-annotations {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity var(--transition-slow);
+}
+
+.blueprint-mode .technical-annotations {
+    opacity: 1;
+}
+
+.annotation {
+    position: absolute;
+    background: var(--bg-secondary);
+    border: 1px solid var(--neural-primary);
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-xs);
+    color: var(--neural-primary);
+    white-space: nowrap;
+}
+
+.annotation::before {
+    content: '';
+    position: absolute;
+    width: var(--spacing-lg);
+    height: 1px;
+    background: var(--neural-primary);
+    top: 50%;
+    right: calc(-1 * var(--spacing-lg));
+    transform: translateY(-50%);
+}
+
+.annotation::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--neural-primary);
+    border-radius: var(--border-radius-full);
+    top: 50%;
+    right: calc(-1 * var(--spacing-lg) - 4px);
+    transform: translateY(-50%);
+}
+
+/* Interaction Effects */
+.interaction-ripple {
+    position: absolute;
+    border-radius: var(--border-radius-full);
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Floor Color Variants */
+.floor-1 {
+    background: linear-gradient(135deg, 
+        rgba(0, 255, 136, 0.1) 0%, 
+        rgba(0, 200, 100, 0.05) 50%, 
+        rgba(0, 255, 136, 0.15) 100%);
+    border-color: rgba(0, 255, 136, 0.5);
+}
+
+.floor-1 .floor-title {
+    color: var(--neural-secondary);
+}
+
+.floor-1 .connection-line {
+    background: linear-gradient(to bottom, var(--neural-secondary), transparent);
+}
+
+.floor-2 {
+    background: linear-gradient(135deg, 
+        rgba(255, 140, 60, 0.1) 0%, 
+        rgba(200, 100, 50, 0.05) 50%, 
+        rgba(255, 140, 60, 0.15) 100%);
+    border-color: rgba(255, 140, 60, 0.5);
+}
+
+.floor-2 .floor-title {
+    color: var(--neural-accent);
+}
+
+.floor-2 .connection-line {
+    background: linear-gradient(to bottom, var(--neural-accent), transparent);
+}
+
+.floor-3 {
+    background: linear-gradient(135deg, 
+        rgba(255, 100, 200, 0.1) 0%, 
+        rgba(200, 50, 150, 0.05) 50%, 
+        rgba(255, 100, 200, 0.15) 100%);
+    border-color: rgba(255, 100, 200, 0.5);
+}
+
+.floor-3 .floor-title {
+    color: var(--neural-warning);
+}
+
+.floor-3 .connection-line {
+    background: linear-gradient(to bottom, var(--neural-warning), transparent);
+}
+
+.floor-4 {
+    background: linear-gradient(135deg, 
+        rgba(200, 255, 100, 0.1) 0%, 
+        rgba(150, 200, 50, 0.05) 50%, 
+        rgba(200, 255, 100, 0.15) 100%);
+    border-color: rgba(200, 255, 100, 0.5);
+}
+
+.floor-4 .floor-title {
+    color: var(--neural-success);
+}
+
+/* CRITICAL ANIMATIONS - These were missing! */
+@keyframes gridPulse {
+    0%, 100% { 
+        opacity: 0.3; 
+    }
+    50% { 
+        opacity: 0.6; 
+    }
+}
+
+@keyframes buildingRotate {
+    0% { 
+        transform: translate(-50%, -50%) rotateY(0deg) rotateX(5deg); 
+    }
+    100% { 
+        transform: translate(-50%, -50%) rotateY(360deg) rotateX(5deg); 
+    }
+}
+
+@keyframes floorConstruct {
+    0% {
+        opacity: 0;
+        transform: translateZ(var(--floor-z, 0px)) scale(0.8) rotateX(-90deg);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateZ(var(--floor-z, 0px)) scale(0.9) rotateX(-45deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateZ(var(--floor-z, 0px)) scale(1) rotateX(0deg);
+    }
+}
+
+@keyframes connectionFlow {
+    0%, 100% { 
+        opacity: 0.3; 
+    }
+    50% { 
+        opacity: 1; 
+    }
+}
+
+@keyframes dataFlowAnimation {
+    0% {
+        top: 0;
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        top: 60px;
+        opacity: 0;
+    }
+}
+
+@keyframes progressPulse {
+    0%, 100% { 
+        box-shadow: 0 0 5px rgba(0, 255, 136, 0.3); 
+    }
+    50% { 
+        box-shadow: 0 0 15px rgba(0, 255, 136, 0.6); 
+    }
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+    }
+    10% { 
+        opacity: 1; 
+    }
+    90% { 
+        opacity: 1; 
+    }
+    100% {
+        transform: translateY(-20px) translateX(100px);
+        opacity: 0;
+    }
+}
+
+@keyframes rippleExpand {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(4);
+        opacity: 0;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    :root {
+        --spacing-lg: 10px;
+        --spacing-xl: 20px;
+    }
+    
+    .blueprint-panel {
+        width: 280px;
+        left: var(--spacing-md);
+        top: var(--spacing-md);
+    }
+    
+    .camera-controls {
+        bottom: var(--spacing-md);
+        right: var(--spacing-md);
+        gap: var(--spacing-sm);
+    }
+    
+    .control-btn {
+        width: 45px;
+        height: 45px;
+        font-size: var(--font-size-2xl);
+    }
+    
+    .building-floor {
+        width: 250px;
+        height: 160px;
+    }
+    
+    .blueprint-grid {
+        background-size: var(--spacing-lg) var(--spacing-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    .blueprint-panel {
+        width: calc(100vw - 20px);
+        left: var(--spacing-md);
+        right: var(--spacing-md);
+    }
+    
+    .building-floor {
+        width: 200px;
+        height: 140px;
+    }
+    
+    .floor-content {
+        padding: var(--spacing-md);
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .building-container {
+        animation: none;
+    }
+    
+    .blueprint-grid {
+        animation: none;
+    }
+    
+    .particle {
+        animation: none;
+        display: none;
+    }
+}
+
+@media (prefers-contrast: high) {
+    :root {
+        --neural-primary: #ffffff;
+        --neural-secondary: #ffffff;
+        --border-primary: #ffffff;
+        --glow-color: rgba(255, 255, 255, 0.8);
+    }
+}
+
+/* Utility Classes */
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--neural-primary);
+    border-top: 2px solid transparent;
+    border-radius: var(--border-radius-full);
+    animation: spin 1s linear infinite;
+    transform: translate(-50%, -50%);
+}
+
+.error {
+    border-color: #ff4444 !important;
+    background: rgba(255, 68, 68, 0.1) !important;
+}
+
+.success {
+    border-color: var(--neural-secondary) !important;
+    background: rgba(0, 255, 136, 0.1) !important;
+}

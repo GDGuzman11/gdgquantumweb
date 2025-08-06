@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="css/contact-enhanced.css">
   <link rel="stylesheet" href="css/theme-system.css">
   <link rel="stylesheet" href="css/dimensional-shift-toggle.css">
+  <link rel="stylesheet" href="css/projects-table.css">
   
 </head>
 <body>
@@ -117,7 +118,7 @@
       </div>
     </div>
 
-<!-- About Content Card -->
+    <!-- About Content Card -->
     <div class="content-card" id="about-card">
       <div class="content-header">
         <button class="back-btn" data-target="hero-card">
@@ -140,6 +141,11 @@
             with broken systems led to building ethical AI tools.
           </p>
         </header>
+
+        <!-- Profile Image -->
+        <div class="profile-image-container">
+          <img src="images/gabriel-profile.png" alt="Gabriel De Guzman" class="profile-image">
+        </div>
 
         <!-- Neural Network Navigation -->
         <div class="neural-navigation">
@@ -212,317 +218,608 @@
           <span class="back-text">Back</span>
         </button>
         <div class="content-title">Projects</div>
+      </div> 
+      <!-- ===== PROJECTS CONTENT CARD REPLACEMENT ===== -->
+      <div class="projects-workspace-header">
+        <h2 class="workspace-title">
+          Every breakthrough starts with<br>
+          <span class="highlight">solving what matters.</span>
+        </h2>
+        <p class="workspace-subtitle">
+          Every line of code written with intention. Every feature built to eliminate friction. Every solution designed to amplify human potential.
+        </p>
+      </div>
+      <!-- Neural Projects Table Container (add after existing header) -->
+  <div class="projects-table-container">
+    
+    <!-- Search and Filters -->
+    <div class="projects-search-container">
+      <div class="projects-search-input-wrapper">
+        <input type="text" class="projects-search-input" placeholder="Search projects or technologies..." id="projectsSearchInput">
+        <div class="projects-filter-status" id="projectsFilterStatus">Filtering by: Production</div>
       </div>
       
-      <div class="projects-content-wrapper">
-        <div class="projects-intro">
-          <h2>Tools for tomorrow, built today.</h2>
-          <p>
-            Each project addresses a specific frustration in how technology currently works. 
-            All built with ethical AI principles and real-world impact in mind.
-          </p>
-        </div>
-
-        <ul class="project-list">
-          <li class="project-item">
-            <div class="project-info">
-              <h3>AI Resume Optimizer</h3>
-              <p class="project-description">
-                AI-powered resume optimization that beats ATS systems while fighting hiring inequality. 
-                Ethical automation for job seekers.
-              </p>
-            </div>
-            <div class="project-status">In Development</div>
-            <div class="project-year">2025</div>
-          </li>
-
-          <li class="project-item">
-            <div class="project-info">
-              <h3>Aegis</h3>
-              <p class="project-description">
-                Cybersecurity defense simulator for hands-on threat training. 
-                Real scenarios, safe environment.
-              </p>
-            </div>
-            <div class="project-status">Planning</div>
-            <div class="project-year">2025</div>
-          </li>
-
-          <li class="project-item">
-            <div class="project-info">
-              <h3>Neural Canvas</h3>
-              <p class="project-description">
-                Interactive particle systems for web interfaces. 
-                Open-source tool for developers.
-              </p>
-            </div>
-            <div class="project-status">Prototype</div>
-            <div class="project-year">2024</div>
-          </li>
-
-          <li class="project-item">
-            <div class="project-info">
-              <h3>GDG Quantum Inc.</h3>
-              <p class="project-description">
-                Ethical AI company focused on automation that serves humanity. 
-                Building the future of work.
-              </p>
-            </div>
-            <div class="project-status">Active</div>
-            <div class="project-year">2024</div>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Tools Content Card -->
-    <div class="content-card" id="tools-card">
-      <div class="content-header">
-        <button class="back-btn" data-target="hero-card">
-          <span class="back-arrow">←</span>
-          <span class="back-text">Back</span>
-        </button>
-        <div class="content-title">Automation Station</div>
-      </div>
-      
-      <div class="tools-content-wrapper">
-        <div class="section-header">
-          <h2 class="section-title">Automation Station</h2>
-          <p class="section-subtitle">
-            Tools that eliminate frustration and amplify human potential. Each one built to solve a real problem I've personally faced.
-          </p>
-        </div>
-
-        <div class="tools-carousel">
-          <!-- ResumeForge Card -->
-          <div class="tool-card">
-            <div class="card-inner">
-              <!-- Front Side -->
-              <div class="card-front">
-                <div class="neural-accent"></div>
-                <div class="card-header">
-                  <div class="tool-icon icon-resume"></div>
-                  <h3 class="tool-name">AI Resume Optimizer</h3>
-                </div>
-                <div class="card-content">
-                  <p class="tool-preview">AI-powered resume optimization that beats ATS systems and levels the playing field.</p>
-                </div>
-                <div class="card-footer">
-                  <span class="tool-status beta">In Development</span>
-                </div>
-              </div>
-              
-              <!-- Back Side -->
-              <div class="card-back">
-                <div class="neural-accent"></div>
-                <div class="card-header">
-                  <h3 class="tool-name">AI Resume Optimizer</h3>
-                </div>
-                <div class="card-content">
-                  <p class="tool-description">
-                    Stop losing opportunities to poorly optimized resumes. Our AI analyzes and transforms your resume for maximum ATS compatibility.
-                  </p>
-                  <ul class="tool-features">
-                    <li>ATS compatibility scoring</li>
-                    <li>Intelligent keyword optimization</li>
-                    <li>Format standardization</li>
-                    <li>Industry-specific templates</li>
-                  </ul>
-                </div>
-                <div class="card-footer">
-                  <button class="tool-cta">Join Beta Waitlist</button>
-                </div>
-              </div>
-            </div>
+      <div class="projects-filter-section">
+        <!-- Status Filters -->
+        <div class="projects-filter-row">
+          <div class="projects-filter-controls">
+            <span class="projects-filter-label">Status:</span>
+            <button class="projects-filter-btn" data-filter="all" data-type="status">All</button>
+            <button class="projects-filter-btn" data-filter="production" data-type="status">Production</button>
+            <button class="projects-filter-btn" data-filter="development" data-type="status">Development</button>
+            <button class="projects-filter-btn" data-filter="alpha" data-type="status">Alpha</button>
           </div>
-
-          <!-- Project Alpha Card -->
-          <div class="tool-card">
-            <div class="card-inner">
-              <!-- Front Side -->
-              <div class="card-front">
-                <div class="neural-accent"></div>
-                <div class="card-header">
-                  <div class="tool-icon icon-alpha construction-icon"></div>
-                  <h3 class="tool-name">Project Alpha</h3>
-                </div>
-                <div class="card-content">
-                  <p class="tool-preview">Revolutionary automation tool in early development. Stay tuned for something special.</p>
-                  <div class="building-blocks">
-                    <div class="block"></div>
-                    <div class="block"></div>
-                    <div class="block"></div>
-                    <div class="block"></div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <span class="tool-status coming-soon">Coming Soon</span>
-                  <div class="progress-bar">
-                    <div class="progress-fill"></div>
-                  </div>
-                </div>
-              </div>
-              
-              <!-- Back Side -->
-              <div class="card-back">
-                <div class="neural-accent"></div>
-                <div class="card-header">
-                  <h3 class="tool-name">Project Alpha</h3>
-                </div>
-                <div class="card-content">
-                  <p class="tool-description">
-                    Something powerful is brewing in the lab. This tool will solve a problem that millions face daily, but we're not ready to reveal it yet.
-                  </p>
-                  <ul class="tool-features">
-                    <li>AI-powered automation</li>
-                    <li>Seamless integration</li>
-                    <li>Time-saving workflow</li>
-                    <li>User-friendly interface</li>
-                  </ul>
-                </div>
-                <div class="card-footer">
-                  <button class="tool-cta" disabled>Notify When Ready</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Aegis Card -->
-          <div class="tool-card">
-            <div class="card-inner">
-              <!-- Front Side -->
-              <div class="card-front">
-                <div class="neural-accent"></div>
-                <div class="card-header">
-                  <div class="tool-icon icon-gamma construction-icon"></div>
-                  <h3 class="tool-name">Aegis</h3>
-                </div>
-                <div class="card-content">
-                  <p class="tool-preview">Cybersecurity defense simulator for hands-on threat training in safe environments.</p>
-                  <div class="building-blocks">
-                    <div class="block"></div>
-                    <div class="block"></div>
-                    <div class="block"></div>
-                    <div class="block"></div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <span class="tool-status coming-soon">Long Term</span>
-                  <div class="progress-bar">
-                    <div class="progress-fill"></div>
-                  </div>
-                </div>
-              </div>
-              
-              <!-- Back Side -->
-              <div class="card-back">
-                <div class="neural-accent"></div>
-                <div class="card-header">
-                  <h3 class="tool-name">Aegis</h3>
-                </div>
-                <div class="card-content">
-                  <p class="tool-description">
-                    Bridge the gap between theoretical cybersecurity knowledge and practical application with realistic threat simulations.
-                  </p>
-                  <ul class="tool-features">
-                    <li>Real threat scenarios</li>
-                    <li>Safe training environment</li>
-                    <li>Hands-on experience</li>
-                    <li>Progressive difficulty</li>
-                  </ul>
-                </div>
-                <div class="card-footer">
-                  <button class="tool-cta" disabled>Coming Later</button>
-                </div>
-              </div>
-            </div>
+          <button class="projects-clear-filters" id="clearProjectsFilters">Clear All</button>
+        </div>
+        
+        <!-- Technology Filters -->
+        <div class="projects-filter-row">
+          <div class="projects-filter-controls">
+            <span class="projects-filter-label">Tech:</span>
+            <button class="tech-filter frontend" data-filter="html5" data-type="tech">HTML5</button>
+            <button class="tech-filter frontend" data-filter="css3" data-type="tech">CSS3</button>
+            <button class="tech-filter frontend" data-filter="javascript" data-type="tech">JavaScript</button>
+            <button class="tech-filter frontend" data-filter="react" data-type="tech">React</button>
+            <button class="tech-filter frontend" data-filter="vue.js" data-type="tech">Vue.js</button>
+            <button class="tech-filter backend" data-filter="node.js" data-type="tech">Node.js</button>
+            <button class="tech-filter backend" data-filter="python" data-type="tech">Python</button>
+            <button class="tech-filter ai" data-filter="gpt-4" data-type="tech">GPT-4</button>
+            <button class="tech-filter ai" data-filter="ml" data-type="tech">ML</button>
+            <button class="tech-filter devops" data-filter="docker" data-type="tech">Docker</button>
+            <button class="tech-filter devops" data-filter="kubernetes" data-type="tech">K8s</button>
+            <button class="tech-filter database" data-filter="mongodb" data-type="tech">MongoDB</button>
+            <button class="tech-filter services" data-filter="stripe" data-type="tech">Stripe</button>
+            <button class="tech-filter frontend" data-filter="canvas" data-type="tech">Canvas</button>
           </div>
         </div>
       </div>
     </div>
+    
+    <!-- Projects Table -->
+    <table class="projects-table">
+      <thead>
+        <tr>
+          <th class="preview-cell">Preview</th>
+          <th>Project</th>
+          <th>Technologies</th>
+          <th>Status</th>
+          <th>Timeline</th>
+          <th>Complexity</th>
+          <th>Links</th>
+        </tr>
+      </thead>
+      <tbody id="projectsTableBody">
+        <tr class="project-row neural-glow">
+          <td class="preview-cell">
+            <div class="project-preview" onclick="openProjectVideo('gdg-website')">
+              <div class="preview-content">
+                GDQ<br>Website
+              </div>
+              <div class="video-overlay"></div>
+            </div>
+          </td>
+          <td>
+            <div class="project-info">
+              <h3>GDG Quantum Website</h3>
+              <p>Interactive neural portfolio with advanced animations</p>
+            </div>
+          </td>
+          <td>
+            <div class="tech-stack">
+              <span class="tech-item frontend">HTML5</span>
+              <span class="tech-item frontend">CSS3</span>
+              <span class="tech-item frontend">JavaScript</span>
+              <span class="tech-item frontend">Canvas</span>
+            </div>
+          </td>
+          <td>
+            <div class="status-badge status-production">
+              <div class="status-dot"></div>
+              Production
+            </div>
+          </td>
+          <td>
+            <div class="timeline-info">
+              <div class="timeline-duration">1 Week</div>
+              <div class="timeline-date">Jun 2025 - Aug</div>
+            </div>
+          </td>
+          <td>
+            <div class="complexity-display">
+              <div class="complexity-visual">
+                <div class="complexity-dot active"></div>
+                <div class="complexity-dot active"></div>
+                <div class="complexity-dot active"></div>
+                <div class="complexity-dot active"></div>
+                <div class="complexity-dot"></div>
+              </div>
+              <span class="complexity-score">8/10</span>
+            </div>
+          </td>
+          <td>
+            <div class="project-links">
+              <a href="#" class="project-link">GitHub</a>
+              <a href="#" class="project-link">Live</a>
+              <a href="#" class="project-link">Demo</a>
+            </div>
+          </td>
+        </tr>
+        
+        <tr class="project-row neural-glow">
+          <td class="preview-cell">
+            <div class="project-preview">
+              <div class="preview-content">
+                AI Resume<br>Platform
+              </div>
+              <div class="video-overlay"></div>
+            </div>
+          </td>
+          <td>
+            <div class="project-info">
+              <h3>Resum8 Platform</h3>
+              <p>AI-powered resume optimization and ATS bypass system</p>
+            </div>
+          </td>
+          <td>
+            <div class="tech-stack">
+              <span class="tech-item frontend">React</span>
+              <span class="tech-item backend">Node.js</span>
+              <span class="tech-item ai">GPT-4</span>
+              <span class="tech-item database">MongoDB</span>
+              <span class="tech-item services">Stripe</span>
+            </div>
+          </td>
+          <td>
+            <div class="status-badge status-development">
+              <div class="status-dot"></div>
+              Development
+            </div>
+          </td>
+          <td>
+            <div class="timeline-info">
+              <div class="timeline-duration">8 Weeks</div>
+              <div class="timeline-date">Dec 2024</div>
+            </div>
+          </td>
+          <td>
+            <div class="complexity-display">
+              <div class="complexity-visual">
+                <div class="complexity-dot active"></div>
+                <div class="complexity-dot active"></div>
+                <div class="complexity-dot active"></div>
+                <div class="complexity-dot active"></div>
+                <div class="complexity-dot active"></div>
+              </div>
+              <span class="complexity-score">10/10</span>
+            </div>
+          </td>
+          <td>
+            <div class="project-links">
+              <a href="#" class="project-link">GitHub</a>
+              <a href="#" class="project-link">Beta</a>
+            </div>
+          </td>
+        </tr>
+        
+        <tr class="project-row neural-glow">
+          <td class="preview-cell">
+            <div class="project-preview">
+              <div class="preview-content">
+                Cyber<br>Defense
+              </div>
+              <div class="video-overlay"></div>
+            </div>
+          </td>
+          <td>
+            <div class="project-info">
+              <h3>Aegis Defense System</h3>
+              <p>Advanced cybersecurity training and simulation platform</p>
+            </div>
+          </td>
+          <td>
+            <div class="tech-stack">
+              <span class="tech-item backend">Python</span>
+              <span class="tech-item devops">Docker</span>
+              <span class="tech-item devops">Kubernetes</span>
+              <span class="tech-item frontend">Vue.js</span>
+              <span class="tech-item ai">ML</span>
+            </div>
+          </td>
+          <td>
+            <div class="status-badge status-alpha">
+              <div class="status-dot"></div>
+              Alpha
+            </div>
+          </td>
+          <td>
+            <div class="timeline-info">
+              <div class="timeline-duration">12 Weeks</div>
+              <div class="timeline-date">Nov 2024</div>
+            </div>
+          </td>
+          <td>
+            <div class="complexity-display">
+              <div class="complexity-visual">
+                <div class="complexity-dot active"></div>
+                <div class="complexity-dot active"></div>
+                <div class="complexity-dot active"></div>
+                <div class="complexity-dot active"></div>
+                <div class="complexity-dot active"></div>
+              </div>
+              <span class="complexity-score">10/10</span>
+            </div>
+          </td>
+          <td>
+            <div class="project-links">
+              <a href="#" class="project-link">GitHub</a>
+              <a href="#" class="project-link">Alpha</a>
+            </div>
+          </td>
+        </tr>
+        
+        <tr class="project-row neural-glow">
+          <td class="preview-cell">
+            <div class="project-preview">
+              <div class="preview-content">
+                Neural<br>Table
+              </div>
+              <div class="video-overlay"></div>
+            </div>
+          </td>
+          <td>
+            <div class="project-info">
+              <h3>Interactive Projects Table</h3>
+              <p>Advanced filtering and search system with neural effects</p>
+            </div>
+          </td>
+          <td>
+            <div class="tech-stack">
+              <span class="tech-item frontend">HTML5</span>
+              <span class="tech-item frontend">CSS3</span>
+              <span class="tech-item frontend">JavaScript</span>
+            </div>
+          </td>
+          <td>
+            <div class="status-badge status-production">
+              <div class="status-dot"></div>
+              Production
+            </div>
+          </td>
+          <td>
+            <div class="timeline-info">
+              <div class="timeline-duration">2 Weeks</div>
+              <div class="timeline-date">Jan 2025</div>
+            </div>
+          </td>
+          <td>
+            <div class="complexity-display">
+              <div class="complexity-visual">
+                <div class="complexity-dot active"></div>
+                <div class="complexity-dot active"></div>
+                <div class="complexity-dot active"></div>
+                <div class="complexity-dot"></div>
+                <div class="complexity-dot"></div>
+              </div>
+              <span class="complexity-score">6/10</span>
+            </div>
+          </td>
+          <td>
+            <div class="project-links">
+              <a href="#" class="project-link">Demo</a>
+              <a href="#" class="project-link">Code</a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+    </div>
 
-    <!-- Contact Content Card -->
-<div class="content-card" id="contact-card">
+<!-- ===== TOOLS CONTENT CARD - EXACT RESTORATION ===== -->
+<div class="content-card" id="tools-card">
   <div class="content-header">
     <button class="back-btn" data-target="hero-card">
       <span class="back-arrow">←</span>
       <span class="back-text">Back</span>
     </button>
-    <div class="content-title">Contact</div>
+    <div class="content-title">Automation Station</div>
   </div>
   
-  <div class="contact-content-wrapper">
-    <!-- Contact Info Section -->
-    <div class="contact-info-section">
-      <h3 class="contact-info-title">Get in touch</h3>
-      
-      <!-- Floating Contact Cards -->
-      <div class="contact-card">
-        <div class="contact-icon icon-email"></div>
-        <h3>Email</h3>
-        <p>gabe@gdgquantuminc.com</p>
-        <p class="contact-subtitle">Usually responds within 24 hours</p>
-      </div>
-      
-      <div class="contact-card">
-        <div class="contact-icon icon-network"></div>
-        <h3>LinkedIn</h3>
-        <p>Connect professionally</p>
-        <p class="contact-subtitle">Let's build networks</p>
-      </div>
-      
-      <div class="contact-card">
-        <div class="contact-icon icon-code"></div>
-        <h3>GitHub</h3>
-        <p>See the code in action</p>
-        <p class="contact-subtitle">Open source collaboration</p>
-      </div>
+  <div class="tools-content-wrapper">
+    <div class="section-header">
+      <h1 class="section-title">
+        AI-powered tools built to<br>
+        <span class="highlight">amplify human potential.</span>
+      </h1>
+      <p class="section-subtitle">
+        Neural systems designed to eliminate friction and automate the impossible.
+      </p>
     </div>
-
-    <!-- Enhanced Form Container -->
-    <div class="form-container">
-      <h2>Let's build something meaningful together.</h2>
-      <p class="contact-form-subtitle">Tell me about your vision</p>
+    
+    <div class="tools-carousel">
       
-      <!-- Progress Indicator -->
-      <div class="progress-label">Form Progress</div>
-      <div class="form-progress">
-        <div class="progress-fill"></div>
-      </div>
-      
-      <form class="contact-form" id="contactForm">
-        <!-- Honeypot for spam protection -->
-        <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
-        
-        <!-- Enhanced Form Groups with Floating Labels -->
-        <div class="form-group">
-          <input type="text" id="name" name="name" placeholder=" " required>
-          <label for="name">Your Name</label>
-        </div>
-        
-        <div class="form-group">
-          <input type="email" id="email" name="email" placeholder=" " required>
-          <label for="email">Email Address</label>
-        </div>
-        
-        <!-- Message with Character Counter -->
-        <div class="form-group char-counter-container">
-          <textarea id="message" name="message" placeholder=" " rows="5" maxlength="500" required></textarea>
-          <label for="message">Tell me about your project or idea...</label>
-          <div class="char-counter">
-            <div class="char-ring"></div>
-            <span>0/500</span>
+      <!-- ===== RESUM8 CARD ===== -->
+      <div class="tool-card">
+        <div class="card-inner">
+          <!-- Front Side -->
+          <div class="card-front">
+            <div class="card-header">
+              <div class="tool-icon icon-resume">
+                <!-- Neural accent dot -->
+                <div class="neural-accent"></div>
+              </div>
+            </div>
+            <div class="card-content">
+              <h3 class="tool-name">Resum8</h3>
+              <p class="tool-preview">AI Resume Optimizer</p>
+            </div>
+            <div class="card-footer">
+              <div class="tool-status">Production</div>
+            </div>
+          </div>
+          
+          <!-- Back Side -->
+          <div class="card-back">
+            <div class="card-header">
+              <h3 class="tool-name">Resum8</h3>
+            </div>
+            <div class="card-content">
+              <p class="tool-description">
+                AI-powered resume optimization that ensures your qualifications get past ATS filters and into human hands.
+              </p>
+              <ul class="tool-features">
+                <li>ATS bypass optimization</li>
+                <li>Industry-specific keywords</li>
+                <li>Real-time scoring</li>
+                <li>Neural formatting</li>
+              </ul>
+            </div>
+            <div class="card-footer">
+              <button class="tool-cta" onclick="window.open('#', '_blank')">
+                Launch Tool
+              </button>
+            </div>
           </div>
         </div>
-        
-        <!-- Enhanced Submit Button -->
-        <button type="submit" class="submit-btn">
-          Send Message
-        </button>
-      </form>
+      </div>
+      
+      <!-- ===== AEGIS CARD ===== -->
+      <div class="tool-card">
+        <div class="card-inner">
+          <!-- Front Side -->
+          <div class="card-front">
+            <div class="card-header">
+              <div class="tool-icon icon-alpha">
+                <!-- Neural accent dot -->
+                <div class="neural-accent"></div>
+              </div>
+            </div>
+            <div class="card-content">
+              <h3 class="tool-name">Aegis</h3>
+              <p class="tool-preview">Cyber Defense Simulator</p>
+            </div>
+            <div class="card-footer">
+              <div class="tool-status alpha">Alpha</div>
+            </div>
+          </div>
+          
+          <!-- Back Side -->
+          <div class="card-back">
+            <div class="card-header">
+              <h3 class="tool-name">Aegis</h3>
+            </div>
+            <div class="card-content">
+              <p class="tool-description">
+                Advanced cybersecurity training platform with realistic threat simulation and neural pattern recognition.
+              </p>
+              <ul class="tool-features">
+                <li>Real-time threat simulation</li>
+                <li>Neural attack patterns</li>
+                <li>Adaptive defense training</li>
+                <li>Risk assessment AI</li>
+              </ul>
+            </div>
+            <div class="card-footer">
+              <button class="tool-cta" disabled onclick="alert('Alpha access coming soon')">
+                Request Alpha
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- ===== PROJECT ALPHA CARD ===== -->
+      <div class="tool-card">
+        <div class="card-inner">
+          <!-- Front Side -->
+          <div class="card-front construction-icon">
+            <div class="card-header">
+              <div class="tool-icon icon-gamma">
+                <!-- Neural accent dot -->
+                <div class="neural-accent"></div>
+              </div>
+            </div>
+            <div class="card-content">
+              <h3 class="tool-name">Project Alpha</h3>
+              <p class="tool-preview">Neural AI Framework</p>
+            </div>
+            <div class="card-footer">
+              <div class="tool-status coming-soon">Coming Soon</div>
+            </div>
+          </div>
+          
+          <!-- Back Side -->
+          <div class="card-back">
+            <div class="card-header">
+              <h3 class="tool-name">Project Alpha</h3>
+            </div>
+            <div class="card-content">
+              <p class="tool-description">
+                Next-generation neural framework for building adaptive AI systems that learn and evolve.
+              </p>
+              
+              <!-- Building Animation -->
+              <div class="building-blocks">
+                <div class="block"></div>
+                <div class="block"></div>
+                <div class="block"></div>
+                <div class="block"></div>
+              </div>
+              
+              <ul class="tool-features">
+                <li>Self-evolving neural nets</li>
+                <li>Quantum-inspired processing</li>
+                <li>Ethical AI constraints</li>
+                <li>Human-AI collaboration</li>
+              </ul>
+              
+              <!-- Progress Bar -->
+              <div class="progress-bar">
+                <div class="progress-fill"></div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button class="tool-cta" disabled onclick="alert('Project Alpha in development')">
+                Join Waitlist
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
     </div>
   </div>
 </div>
+
+<!-- ===== ADDITIONAL ANIMATION STYLES ===== -->
+<!-- Add this to ensure all animations work perfectly -->
+<style>
+/* Enhanced card flip animation timing */
+.tool-card .card-inner {
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+/* Staggered hover effects for better UX */
+.tool-card:nth-child(1) .card-inner {
+  transition-delay: 0s;
+}
+
+.tool-card:nth-child(2) .card-inner {
+  transition-delay: 0.1s;
+}
+
+.tool-card:nth-child(3) .card-inner {
+  transition-delay: 0.2s;
+}
+
+/* Enhanced neural accent animation */
+.neural-accent {
+  animation: pulse-glow-accent 2s infinite ease-in-out;
+}
+
+/* Construction sweep for Project Alpha */
+.construction-icon::after {
+  animation: construction-sweep 2s infinite;
+}
+
+/* Building blocks animation */
+.building-blocks .block {
+  animation: building-animation 1.5s infinite ease-in-out;
+}
+
+.building-blocks .block:nth-child(1) { animation-delay: 0s; }
+.building-blocks .block:nth-child(2) { animation-delay: 0.2s; }
+.building-blocks .block:nth-child(3) { animation-delay: 0.4s; }
+.building-blocks .block:nth-child(4) { animation-delay: 0.6s; }
+
+/* Progress bar animation */
+.progress-fill {
+  animation: progress-fill 3s infinite ease-in-out;
+}
+</style>
+
+    <!-- Contact Content Card -->
+    <div class="content-card" id="contact-card">
+      <div class="content-header">
+        <button class="back-btn" data-target="hero-card">
+          <span class="back-arrow">←</span>
+          <span class="back-text">Back</span>
+        </button>
+        <div class="content-title">Contact</div>
+      </div>
+      
+      <div class="contact-content-wrapper">
+        <!-- Contact Info Section -->
+        <div class="contact-info-section">
+          <h3 class="contact-info-title">Get in touch</h3>
+          
+          <!-- Floating Contact Cards -->
+          <div class="contact-card">
+            <div class="contact-icon icon-email"></div>
+            <h3>Email</h3>
+            <p>gabe@gdgquantuminc.com</p>
+            <p class="contact-subtitle">Usually responds within 24 hours</p>
+          </div>
+          
+          <div class="contact-card">
+            <div class="contact-icon icon-network"></div>
+            <h3>LinkedIn</h3>
+            <p>Connect professionally</p>
+            <p class="contact-subtitle">Let's build networks</p>
+          </div>
+          
+          <div class="contact-card">
+            <div class="contact-icon icon-code"></div>
+            <h3>GitHub</h3>
+            <p>See the code in action</p>
+            <p class="contact-subtitle">Open source collaboration</p>
+          </div>
+        </div>
+
+        <!-- Enhanced Form Container -->
+        <div class="form-container">
+          <h2>Let's build something meaningful together.</h2>
+          <p class="contact-form-subtitle">Tell me about your vision</p>
+          
+          <!-- Progress Indicator -->
+          <div class="progress-label">Form Progress</div>
+          <div class="form-progress">
+            <div class="progress-fill"></div>
+          </div>
+          
+          <form class="contact-form" id="contactForm">
+            <!-- Honeypot for spam protection -->
+            <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
+            
+            <!-- Enhanced Form Groups with Floating Labels -->
+            <div class="form-group">
+              <input type="text" id="name" name="name" placeholder=" " required>
+              <label for="name">Your Name</label>
+            </div>
+            
+            <div class="form-group">
+              <input type="email" id="email" name="email" placeholder=" " required>
+              <label for="email">Email Address</label>
+            </div>
+            
+            <!-- Message with Character Counter -->
+            <div class="form-group char-counter-container">
+              <textarea id="message" name="message" placeholder=" " rows="5" maxlength="500" required></textarea>
+              <label for="message">Tell me about your project or idea...</label>
+              <div class="char-counter">
+                <div class="char-ring"></div>
+                <span>0/500</span>
+              </div>
+            </div>
+            
+            <!-- Enhanced Submit Button -->
+            <button type="submit" class="submit-btn">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
 
   </div>
 
@@ -535,32 +832,199 @@
 
   <!-- Modular JavaScript -->
   <script type="module" src="js/main.js"></script>
+  
   <!-- Modal for expanded cards -->
-<div class="card-modal" id="cardModal" onclick="closeCard(event)">
-  <div class="modal-content" onclick="event.stopPropagation()">
-    <div class="close-hint">Click outside to close</div>
-    <div class="modal-header">
-      <div class="modal-number" id="modalNumber">01</div>
-      <h2 class="modal-title" id="modalTitle">The Learning Journey</h2>
+  <div class="card-modal" id="cardModal" onclick="closeCard(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="close-hint">Click outside to close</div>
+      <div class="modal-header">
+        <div class="modal-number" id="modalNumber">01</div>
+        <h2 class="modal-title" id="modalTitle">The Learning Journey</h2>
+      </div>
+      <div id="modalContent">
+        <!-- Content will be populated by JavaScript -->
+      </div>
     </div>
-    <div id="modalContent">
-      <!-- Content will be populated by JavaScript -->
+  </div>
+
+  <!-- Mobile Sticky Navigation (only visible on mobile) -->
+  <nav class="mobile-sticky-nav" style="display: none;">
+    <div class="mobile-logo">
+      <span style="font-weight: 600; color: #1F2937;">GDG Quantum</span>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="#" data-target="about-card">About</a>
+      <a href="#" data-target="projects-card">Projects</a>
+      <a href="#" data-target="tools-card">Tools</a>
+      <a href="#" data-target="contact-card">Contact</a>
+    </div>
+  </nav>
+  <!-- Blueprint Modal -->
+<div class="blueprint-modal" id="blueprintModal" onclick="closeBlueprint(event)">
+  <div class="blueprint-container" onclick="event.stopPropagation()">
+    
+    <div class="blueprint-close" onclick="closeBlueprint()">×</div>
+    
+    <div class="blueprint-header">
+      <div class="blueprint-title">GDG Quantum Project Specification</div>
+    </div>
+
+    <div class="blueprint-content">
+      
+      <!-- Demo Section -->
+      <div class="demo-section">
+        <div class="demo-icon">🌐</div>
+        <div class="demo-title">GDG Quantum Website</div>
+        <div class="demo-subtitle">Interactive Neural Experience</div>
+        <div class="demo-features">
+          <div class="demo-feature">Responsive Neural Design</div>
+          <div class="demo-feature">Dimensional Theme Switching</div>
+          <div class="demo-feature">Performance Optimized</div>
+          <div class="demo-feature">Modular Architecture</div>
+          <div class="demo-feature">Mobile-First Approach</div>
+        </div>
+      </div>
+
+      <!-- Information Section -->
+      <div class="info-section">
+        <div class="section-title">Project Details</div>
+        
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="info-label">Project Type</div>
+            <div class="info-value">Full-Stack Web Application</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Status</div>
+            <div class="info-value">Production Ready</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Duration</div>
+            <div class="info-value">4 Weeks Solo Development</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Technologies</div>
+            <div class="info-value">HTML5, CSS3, ES6 JavaScript</div>
+          </div>
+        </div>
+
+        <div class="section-title">Key Achievements</div>
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="info-label">Performance Score</div>
+            <div class="info-value">95/100 (Lighthouse)</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Load Time</div>
+            <div class="info-value">&lt; 2 seconds</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Code Written</div>
+            <div class="info-value">2,500+ Lines</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Custom Animations</div>
+            <div class="info-value">15+ Neural Effects</div>
+          </div>
+        </div>
+
+        <div class="section-title">Live Links</div>
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="info-label">Website</div>
+            <div class="info-value" style="color: var(--neural-primary);">gdgquantuminc.com</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Source Code</div>
+            <div class="info-value" style="color: var(--neural-primary);">github.com/gdguzman11</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
+</div>
+  </div>
+</div>
+
+<!-- NEW SCRIPT GOES HERE -->
+<script>
+function openProjectVideo(projectId) {
+  console.log('🎬 Opening video for:', projectId);
+  
+  // Create modal
+  const modal = document.createElement('div');
+  modal.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    backdrop-filter: blur(10px);
+  `;
+  
+  // Video container
+  const container = document.createElement('div');
+  container.style.cssText = `
+    background: rgba(15, 15, 15, 0.9);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 90%;
+    max-height: 90%;
+    position: relative;
+  `;
+  
+  // Close button
+  const closeBtn = document.createElement('button');
+  closeBtn.innerHTML = '×';
+  closeBtn.style.cssText = `
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 60, 60, 0.8);
+    border: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+  `;
+  
+  // Video element
+  const video = document.createElement('video');
+  video.controls = true;
+  video.autoplay = true;
+  video.src = 'videos/ProjectsBluePrint.mp4';
+  video.style.cssText = `
+    width: 100%;
+    max-width: 800px;
+    border-radius: 12px;
+  `;
+  
+  // Close modal function
+  const closeModal = () => document.body.removeChild(modal);
+  closeBtn.onclick = closeModal;
+  modal.onclick = (e) => {
+    if (e.target === modal) closeModal();
+  };
+  
+  // Build modal
+  container.appendChild(closeBtn);
+  container.appendChild(video);
+  modal.appendChild(container);
+  document.body.appendChild(modal);
+}
+</script>
 
 </body>
-
-<!-- Mobile Sticky Navigation (only visible on mobile) -->
-<nav class="mobile-sticky-nav" style="display: none;">
-  <div class="mobile-logo">
-    <span style="font-weight: 600; color: #1F2937;">GDG Quantum</span>
-  </div>
-  <div class="mobile-nav-links">
-    <a href="#" data-target="about-card">About</a>
-    <a href="#" data-target="projects-card">Projects</a>
-    <a href="#" data-target="tools-card">Tools</a>
-    <a href="#" data-target="contact-card">Contact</a>
-  </div>
-</nav>
+</html>
+</body>
 </html>
